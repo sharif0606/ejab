@@ -1,0 +1,11 @@
+/* voucher */
+.sugg{
+    position: absolute;
+    z-index: 999;
+    overflow: auto;
+    max-height: 38vh;
+}
+/* common */
+.pt-4{
+    padding-top: 2.5rem;
+}
