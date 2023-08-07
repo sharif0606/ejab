@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Thana extends Model
+class Union extends Model
 {
     use HasFactory;
     public function upazilla(){
-        return $this->belongsTo('App\Models\Upazilla','upazilla_id','id');
+        return $this->belongsTo('App\Models\Upazilla');
     }
 }

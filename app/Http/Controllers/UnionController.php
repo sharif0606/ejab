@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Union;
 use App\Models\Upazilla;
-use App\Models\Thana;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 
-class ThanaController extends Controller
+class UnionController extends Controller
 {
     use ResponseTrait;
     /**
@@ -17,8 +17,8 @@ class ThanaController extends Controller
      */
     public function index()
     {
-        $thana=Thana::latest()->paginate(10);
-        return view('address.thana.index',compact('thana'));
+        $union=Union::latest()->paginate(10);
+        return view('address.union.index',compact('union'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ThanaController extends Controller
     public function create()
     {
         $allUpazilla = Upazilla::all();
-        return view('address.thana.create',compact('allUpazilla'));
+        return view('address.union.create',compact('allUpazilla'));
     }
 
     /**
@@ -41,16 +41,13 @@ class ThanaController extends Controller
     public function store(Request $request)
     {
         try{
-            $data=new Thana;
-            $data->thana=$request->thana;
+            $data=new Union;
+            $data->union=$request->union;
             $data->upazilla_id=$request->upazilla_id;
-
-            
             if(!!$data->save()){
-                return redirect(route(currentUser().'.thana.index'))->with($this->responseMessage(true,null,"Data successfully created."));
+                return redirect(route(currentUser().'.union.index'))->with($this->responseMessage(true,null,"Data successfully created."));
             }
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
         }
     }
@@ -58,10 +55,10 @@ class ThanaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Thana  $thana
+     * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function show(Thana $thana)
+    public function show(Union $union)
     {
         //
     }
@@ -69,34 +66,32 @@ class ThanaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Thana  $thana
+     * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thana $thana)
+    public function edit(Union $union)
     {
         $allUpazilla = Upazilla::all();
-        return view('address.thana.edit',compact('thana','allUpazilla'));
+        return view('address.union.edit',compact('union','allUpazilla'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Thana  $thana
+     * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thana $thana)
+    public function update(Request $request, Union $union)
     {
         try{
-            
-            $thana->thana=$request->thana;
-            $thana->upazilla_id=$request->upazilla_id;
-            
-            if(!!$thana->save()){
-                return redirect(route(currentUser().'.thana.index'))->with($this->responseMessage(true,null,"Data successfully Updated."));
+            $data=$union;
+            $data->union=$request->union;
+            $data->upazilla_id=$request->upazilla_id;
+            if(!!$data->save()){
+                return redirect(route(currentUser().'.union.index'))->with($this->responseMessage(true,null,"Data successfully created."));
             }
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
         }
     }
@@ -104,10 +99,10 @@ class ThanaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Thana  $thana
+     * @param  \App\Models\Union  $union
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thana $thana)
+    public function destroy(Union $union)
     {
         //
     }

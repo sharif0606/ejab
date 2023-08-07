@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model{
     use HasFactory;
     
-    public function postoffices(){
-        return $this->hasMany('App\Models\Postoffice');
+    public function upazillas(){
+        return $this->hasMany('App\Models\Upazilla');
     }
     public function division(){
-        return $this->belongsTo('App\Models\Division','division_id','id');
+        return $this->belongsTo('App\Models\Division');
     }
 }

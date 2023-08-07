@@ -18,13 +18,12 @@ class CreateCattleTable extends Migration
             $table->string('serial_no')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('beneficiary_name')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('f_or_h_name')->nullable()->collation('utf8mb4_unicode_ci');
-            $table->integer('zone_id')->nullable();
             $table->integer('country_id')->nullable();
+            $table->integer('zone_id')->nullable();
             $table->integer('division_id')->nullable();
             $table->integer('district_id')->nullable();
-            $table->string('upazilla')->nullable()->collation('utf8mb4_unicode_ci');
-            $table->string('thana')->nullable()->collation('utf8mb4_unicode_ci');
-            $table->string('union')->nullable()->collation('utf8mb4_unicode_ci');
+            $table->integer('upazilla_id')->nullable();
+            $table->integer('union_id')->nullable();
             $table->string('postoffice')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('village')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('beneficiary_contact')->nullable()->collation('utf8mb4_unicode_ci');

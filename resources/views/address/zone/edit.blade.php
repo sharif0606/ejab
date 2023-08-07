@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','Country Update')
+@section('title','Zone Update')
 @push('style')
 <style>
 select {
@@ -11,10 +11,10 @@ select {
 @section('content')
 <div class="page-header">
     <h1>
-		Country
+		Zone
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Country Add
+            Zone Add
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -29,36 +29,40 @@ select {
         <!-- PAGE CONTENT BEGINS -->
         <div class="widget-box">
 			<div class="widget-header widget-header-small">
-				<h5 class="widget-title lighter">Country Update Form</h5>
+				<h5 class="widget-title lighter">Zone Update Form</h5>
 			</div>
 			<div class="widget-body">
 				<div class="widget-main">
-					<form action="{{route(currentUser().'.country.update',$country->id)}}" method="post" class="form-search">
+					<form action="{{route(currentUser().'.zone.update',$zone->id)}}" method="post" class="form-search">
 					@csrf
 					@method('PUT')
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('country')) has-error @endif">
-									<label>Country Name <span class="text-danger">*</span></label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="country" value="{{$country->country}}">
-										@if($errors->has('country')) 
-											<i class="ace-icon fa fa-times-circle"></i>
-										@endif
-									</span>
-									@if($errors->has('country')) 
-										<div class="help-block col-sm-reset">
-											{{ $errors->first('country') }}
-										</div>
-									@endif
+								<div class="form-group">
+									<label>Select Country</label>
+									<select class="form-control" name="country_id">
+									    @if($allCountry)
+    									    @foreach($allCountry as $country)
+    									        <option value="{{$country->id}}" {{$zone->country_id==$country->id?"selected":""}}>{{$country->code}}-{{$country->country}}</option>
+    									    @endforeach
+									    @endif
+									</select>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-6">
-								<div class="form-group">
-									<label>Country Code</label>
+								<div class="form-group @if($errors->has('zone')) has-error @endif">
+									<label>Zone Name <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="code" value="{{$country->code}}">
+										<input type="text" class="width-100" name="zone" value="{{$zone->zone}}">
+										@if($errors->has('zone')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
 									</span>
+									@if($errors->has('zone')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('zone') }}
+										</div>
+									@endif
 								</div>
 							</div>
 						</div>

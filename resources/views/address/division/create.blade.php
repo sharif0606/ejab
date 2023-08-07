@@ -37,10 +37,22 @@ select {
 					@csrf
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
+								<div class="form-group">
+									<label>Select Zone <span class="text-danger">*</span></label>
+									<select class="form-control" name="zone_id" required>
+									    @if($allZone)
+    									    @foreach($allZone as $zone)
+    									        <option value="{{$zone->id}}">{{$zone->zone}}</option>
+    									    @endforeach
+									    @endif
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group @if($errors->has('division')) has-error @endif">
 									<label>Division Name <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="division" value="{{old('division')}}">
+										<input type="text" class="width-100" name="division" value="{{old('division')}}" required>
 										@if($errors->has('division')) 
 											<i class="ace-icon fa fa-times-circle"></i>
 										@endif
@@ -50,18 +62,6 @@ select {
 											{{ $errors->first('division') }}
 										</div>
 									@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6 hidden">
-								<div class="form-group">
-									<label>Select Country</label>
-									<select class="form-control" name="country_id">
-									    @if($allCountry)
-    									    @foreach($allCountry as $country)
-    									        <option value="{{$country->id}}">{{$country->code}}-{{$country->country}}</option>
-    									    @endforeach
-									    @endif
-									</select>
 								</div>
 							</div>
 						</div>

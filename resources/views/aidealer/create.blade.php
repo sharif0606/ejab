@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','গবাদি পশু যোগ')
+@section('title','Dealer Add')
 @push('style')
 <link rel="stylesheet" href="{{asset('public/assets/css/chosen.min.css')}}"/>
 <style>
@@ -20,10 +20,10 @@ hr {
 @section('content')
 <div class="page-header">
     <h1>
-		গবাদি পশু
+		Dealer
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            গবাদি পশু যোগ
+            Dealer Add
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -38,60 +38,19 @@ hr {
         <!-- PAGE CONTENT BEGINS -->
         <div class="widget-box">
 			<div class="widget-header widget-header-small">
-				<h5 class="widget-title lighter">গবাদি পশু যোগ ফর্ম</h5>
+				<h5 class="widget-title lighter">Ai Dealer</h5>
 			</div>
 			<div class="widget-body">
 				<div class="widget-main">
-					<form action="{{route(currentUser().'.cattle.store')}}" method="post" class="form-search" enctype="multipart/form-data">
+					<form action="{{route(currentUser().'.aidealer.store')}}" method="post" class="form-search" enctype="multipart/form-data">
 					@csrf
-						<div class="row">
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>#SL No <span class="text-danger">*</span> </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" maxlength="8" required class="width-100" name="serial_no" value="{{old('serial_no')}}">
-									</span>
-									@if ($errors->has('serial_no'))
-        								<span class="text-danger">{{ $errors->first('serial_no') }}</span>
-        							@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>কৃত্রিম প্রজনন সুবিধা ভোগীর নাম</label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="beneficiary_name" value="{{old('beneficiary_name')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>কৃত্রিম প্রজনন সুবিধা ভোগীর মোবাইল নাম্বার <span class="text-danger">*</span></label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" required name="beneficiary_contact" value="{{old('beneficiary_name')}}">
-									</span>
-									@if ($errors->has('beneficiary_contact'))
-        								<span class="text-danger">{{ $errors->first('beneficiary_contact') }}</span>
-        							@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাবা/স্বামীর নাম</label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="f_or_h_name" value="{{old('f_or_h_name')}}">
-									</span>
-								</div>
-							</div>
-						</div>
-						<hr/>
 						<div class="row">
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label> জোন </label>
+									<label> Zone </label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="zone_id" onchange="$('.pdiviop').hide();$('.pdiviop'+this.value).show()">
-										    <option value="">জোন নির্বাচন করুন </option>
+										    <option value="">Select Zone</option>
 										    @if($zone)
 										        @foreach($zone as $z)
 										            <option value="{{$z->id}}" @if($z->id==old('zone_id')) selected @endif >{{$z->zone}}</option>
@@ -103,10 +62,10 @@ hr {
 					        </div>
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label> বিভাগ	</label>
+									<label> Division</label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="division_id" onchange="$('.pdist').hide();$('.pdist'+this.value).show()">
-										    <option value="">বিভাগ নির্বাচন করুন</option>
+										    <option value="">Select Division</option>
 										    @if($division)
 										        @foreach($division as $divi)
 										            <option value="{{$divi->id}}" @if($divi->id==old('division_id')) selected @endif class="pdiviop pdiviop{{$divi->zone_id}}">{{$divi->division}}</option>
@@ -118,10 +77,10 @@ hr {
 					        </div>
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label>জেলা</label>
+									<label>District</label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="district_id" onchange="$('.pupo').hide();$('.pupo'+this.value).show()">
-										    <option value="">জেলা নির্বাচন করুন </option>
+										    <option value="">Select District </option>
 										    @if($district)
 										        @foreach($district as $dist)
 										            <option value="{{$dist->id}}"  @if($dist->id==old('district_id')) selected @endif class="pdist pdist{{$dist->division_id}}">{{$dist->district}}</option>
@@ -133,10 +92,10 @@ hr {
 					        </div>
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label>উপজেলা/থানা</label>
+									<label>Upazilla</label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="upazilla_id" onchange="$('.puni').hide();$('.puni'+this.value).show()">
-										    <option value="">উপজেলা/থানা নির্বাচন করুন </option>
+										    <option value="">Select Upazilla</option>
 										    @if($upazilla)
 										        @foreach($upazilla as $upo)
 										            <option value="{{$upo->id}}"  @if($upo->id==old('upazilla_id')) selected @endif class="pupo pupo{{$upo->district_id}}">{{$upo->upazilla}}</option>
@@ -148,10 +107,10 @@ hr {
 					        </div>
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label>ইউনিয়ন/পৌরসভা/ওয়ার্ড </label>
+									<label>Union</label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="union_id">
-										    <option value="">ইউনিয়ন/পৌরসভা/ওয়ার্ড নির্বাচন করুন </option>
+										    <option value="">Select Union </option>
 										    @if($union)
 										        @foreach($union as $uni)
 										            <option value="{{$uni->id}}"  @if($uni->id==old('union_id')) selected @endif class="puni puni{{$uni->upazilla_id}}">{{$uni->union}}</option>
@@ -161,23 +120,6 @@ hr {
 									</span>
 								</div>
 					        </div>
-							
-					        <div class="col-xs-12 col-sm-3">
-    				            <div class="form-group">
-    								<label>পোষ্ট অফিস </label>
-    								<span class="block input-icon input-icon-right">
-    									<input type="text" class="width-100" name="postoffice" value="{{old('postoffice')}}">
-    								</span>
-    							</div>
-    				        </div>
-					        <div class="col-xs-12 col-sm-3">
-    				            <div class="form-group">
-    								<label> গ্রাম/মহল্লা  </label>
-    								<span class="block input-icon input-icon-right">
-    									<input type="text" class="width-100" name="village" value="{{old('village')}}">
-    								</span>
-    							</div>
-    				        </div>
 					        
 					    </div>
 						<hr/>
@@ -266,58 +208,7 @@ hr {
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>ষাড়ের জাত  </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="bull_breed">
-										    <option value="">জাত নির্বাচন করুন </option>
-										    @if($breed)
-										        @foreach($breed as $br)
-										            <option value="{{$br->id}}" @if($br->id==old('bull_breed')) selected @endif >{{$br->breed}}</option>
-										        @endforeach
-										    @endif
-										</select>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>রক্তের হার  </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="blood_qty">
-										    <option value=""> হার  নির্বাচন করুন </option>
-										    @if($blood)
-										        @foreach($blood as $bl)
-										            <option value="{{$bl->id}}" @if($bl->id==old('blood_rate')) selected @endif >{{$bl->blood_rate}}</option>
-										        @endforeach
-										    @endif
-										</select>
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাচ্চা প্রসবের সম্ভাব্য তারিখ   </label>
-									<span class="block input-icon input-icon-right">
-										<input type="date" class="width-100" name="delivery_date_aprox" value="{{old('delivery_date_aprox')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label> গর্ভপরিক্ষার ফলাফল (+/-)  </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="pregnancy_exam_result">
-										    <option value=""> ফলাফল নির্বাচন করুন </option>
-										    <option value="1" @if("1"==old('pregnancy_exam_result')) selected @endif> (+)হ্যাঁ </option>
-										    <option value="0" @if("0"==old('pregnancy_exam_result')) selected @endif> (-)না </option>
-										</select>
-									</span>
-								</div>
-							</div>
+							
 						</div>
 						
 						<hr/>
@@ -379,21 +270,7 @@ hr {
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাছুরের রং   </label>
-									<span class="block input-icon input-icon-right">
-									    <select readonly class="width-100" name="calf_color">
-										    <option value=""> রং নির্বাচন করুন </option>
-										    @if($color)
-										        @foreach($color as $co)
-										            <option disabled value="{{$co->id}}" @if($co->id==old('calf_color')) selected @endif >{{$co->color}}</option>
-										        @endforeach
-										    @endif
-										</select>
-									</span>
-								</div>
-							</div>
+							
 							<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
 									<label>বাছুরের ওজন (কেজি)  </label>

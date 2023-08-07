@@ -37,6 +37,19 @@ select {
 					@csrf
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
+								<div class="form-group">
+									<label>Select Division</label>
+									<select class="form-control" name="division_id">
+									    <option value="">Select Division</option>
+									    @if($allDivision)
+											@foreach($allDivision as $division)
+												<option value="{{$division->id}}">{{$division->division}}</option>
+											@endforeach
+									    @endif
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group @if($errors->has('district')) has-error @endif">
 									<label>District Name <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
@@ -50,19 +63,6 @@ select {
 											{{ $errors->first('district') }}
 										</div>
 									@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group">
-									<label>Select Division</label>
-									<select class="form-control" name="division_id">
-									    <option value="">Select Division</option>
-									    @if($allDivision)
-									    @foreach($allDivision as $division)
-									    <option value="{{$division->id}}">{{$division->division}}</option>
-									    @endforeach
-									    @endif
-									</select>
 								</div>
 							</div>
 						</div>

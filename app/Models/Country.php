@@ -9,7 +9,7 @@ class Country extends Model
 {
     use HasFactory;
     
-    public function divisions(){
-        return $this->hasMany('App\Models\Division');
+    public function zones(){
+        return $this->hasMany('App\Models\Zone');
     }
 }

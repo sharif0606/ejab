@@ -13,6 +13,12 @@ class Cattle extends Model
     public function division(){
         return $this->belongsTo('App\Models\Division','division_id','id');
     }
+    public function upazilla(){
+        return $this->belongsTo('App\Models\Upazilla');
+    }
+    public function union(){
+        return $this->belongsTo('App\Models\Union');
+    }
     
     public function district(){
         return $this->belongsTo('App\Models\District','district_id','id');

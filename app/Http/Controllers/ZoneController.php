@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Zone;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
@@ -28,7 +29,8 @@ class ZoneController extends Controller
      */
     public function create()
     {
-        return view('address.zone.create');
+        $allCountry = Country::all();
+        return view('address.zone.create',compact('allCountry'));
     }
 
     /**
@@ -42,12 +44,11 @@ class ZoneController extends Controller
         try{
             $data=new Zone;
             $data->zone=$request->zone;
-            
+            $data->country_id=$request->country_id;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.zone.index'))->with($this->responseMessage(true,null,"Data successfully created."));
             }
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
         }
     }
@@ -71,8 +72,8 @@ class ZoneController extends Controller
      */
     public function edit(Zone $zone)
     {
-        //$zone=Zone::latest()->paginate(10);
-        return view('address.zone.edit',compact('zone'));
+        $allCountry = Country::all();
+        return view('address.zone.edit',compact('zone','allCountry'));
     }
 
     /**
@@ -87,12 +88,12 @@ class ZoneController extends Controller
         try{
             
             $zone->zone=$request->zone;
+            $data->country_id=$request->country_id;
             
             if(!!$zone->save()){
                 return redirect(route(currentUser().'.zone.index'))->with($this->responseMessage(true,null,"Data successfully created."));
             }
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
         }
     }

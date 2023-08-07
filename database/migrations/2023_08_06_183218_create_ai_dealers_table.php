@@ -20,7 +20,6 @@ class CreateAiDealersTable extends Migration
             $table->integer('division_id')->nullable();
             $table->integer('district_id')->nullable();
             $table->integer('upazilla')->nullable();
-            $table->integer('thana')->nullable();
             $table->integer('union')->nullable();
             $table->string('name')->collation('utf8mb4_unicode_ci');
             $table->text('address')->collation('utf8mb4_unicode_ci');
@@ -28,7 +27,7 @@ class CreateAiDealersTable extends Migration
             $table->string('ai_technician_name')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('ai_technician_id')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('ai_technician_contact')->nullable()->collation('utf8mb4_unicode_ci');
-            $table->string('training')->nullable()->collation('utf8mb4_unicode_ci');
+            $table->string('training_institute')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('ejab_batch_no')->nullable()->collation('utf8mb4_unicode_ci');
             $table->timestamps();
             $table->softDeletes();

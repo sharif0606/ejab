@@ -11,7 +11,7 @@ class Division extends Model
     public function districts(){
         return $this->hasMany('App\Models\District');
     }
-    public function country(){
-        return $this->belongsTo('App\Models\Country','country_id','id');
+    public function zone(){
+        return $this->belongsTo('App\Models\Zone','zone_id','id');
     }
 }

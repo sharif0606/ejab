@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','Thana Add')
+@section('title','Union Update')
 @push('style')
 <style>
 select {
@@ -11,10 +11,10 @@ select {
 @section('content')
 <div class="page-header">
     <h1>
-		Thana
+		Union
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Thana Add
+            Union Add
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -29,45 +29,44 @@ select {
         <!-- PAGE CONTENT BEGINS -->
         <div class="widget-box">
 			<div class="widget-header widget-header-small">
-				<h5 class="widget-title lighter">Thana Add Form</h5>
+				<h5 class="widget-title lighter">Union Update Form</h5>
 			</div>
 			<div class="widget-body">
 				<div class="widget-main">
-					<form action="{{route(currentUser().'.thana.store')}}" method="post" class="form-search">
+					<form action="{{route(currentUser().'.union.update',$union->id)}}" method="post" class="form-search">
 					@csrf
+					@method('PUT')
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('thana')) has-error @endif">
-									<label>Thana Name <span class="text-danger">*</span></label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="thana" value="{{old('thana')}}">
-										@if($errors->has('thana')) 
-											<i class="ace-icon fa fa-times-circle"></i>
-										@endif
-									</span>
-									@if($errors->has('thana')) 
-										<div class="help-block col-sm-reset">
-											{{ $errors->first('thana') }}
-										</div>
-									@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
-									<label>Select Upazilla</label>
+									<label>Select Upazila</label>
 									<select class="form-control" name="upazilla_id">
-									    <option value="">Select Upazilla</option>
+									    <option value="">Select upazilla</option>
 									    @if($allUpazilla)
-									    @foreach($allUpazilla as $upazilla)
-									    <option value="{{$upazilla->id}}">{{$upazilla->upazilla}}</option>
-									    @endforeach
+											@foreach($allUpazilla as $u)
+												<option value="{{$u->id}}" @if($u->id == $union->upazilla_id) selected @endif>{{$u->upazilla}}</option>
+											@endforeach
 									    @endif
 									</select>
 								</div>
 							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group @if($errors->has('union')) has-error @endif">
+									<label>Union Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="union" value="{{ old('union', $union->union) }}">
+										@if($errors->has('union')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('union')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('union') }}
+										</div>
+									@endif
+								</div>
+							</div>
 						</div>
-						
-					
 						<div class="row">
 							<div class="col-sm-12 text-right">
 								<button class="btn btn-primary" type="submit"> Submit </button>

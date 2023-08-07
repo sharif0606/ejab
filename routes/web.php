@@ -7,13 +7,14 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\CattleController;
+use App\Http\Controllers\AiDealerController;
 
 /* Address support */
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\UpazillaController;
-use App\Http\Controllers\ThanaController;
+use App\Http\Controllers\UnionController;
 use App\Http\Controllers\VillageController;
 use App\Http\Controllers\PostofficeController;
 use App\Http\Controllers\ZoneController;
@@ -51,10 +52,13 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
     Route::prefix('superadmin')->group(function(){
         
         Route::get('/dashboard', [DashboardController::class, 'superadmin'])->name('superadmin.dashboard');
-        Route::resource('users', UserController::class);
+        Route::resource('users', UserController::class, ['names' => 'superadmin.users']);
 
         Route::resource('cattle', CattleController::class, ['names' => 'superadmin.cattle']);
         Route::get('/cattle_export', [CattleController::class, 'cattle_export'])->name('superadmin.cattle_export');
+
+        Route::resource('aidealer', AiDealerController::class, ['names' => 'superadmin.aidealer']);
+        Route::get('/aidealer_export', [AiDealerController::class, 'aidealer_export'])->name('superadmin.aidealer_export');
         
         
         /* address support */
@@ -62,7 +66,7 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
         Route::resource('division', DivisionController::class, ['names' => 'superadmin.division']);
         Route::resource('district', DistrictController::class, ['names' => 'superadmin.district']);
         Route::resource('upazilla', UpazillaController::class, ['names' => 'superadmin.upazilla']);
-        Route::resource('thana', ThanaController::class, ['names' => 'superadmin.thana']);
+        Route::resource('union', UnionController::class, ['names' => 'superadmin.union']);
         Route::resource('village', VillageController::class, ['names' => 'superadmin.village']);
         Route::resource('postoffice', PostofficeController::class, ['names' => 'superadmin.postoffice']);
         Route::resource('zone', ZoneController::class, ['names' => 'superadmin.zone']);
@@ -75,6 +79,18 @@ Route::group(['middleware'=>'isAdmin'],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
 
+        Route::resource('cattle', CattleController::class, ['names' => 'admin.cattle']);
+        Route::get('/cattle_export', [CattleController::class, 'cattle_export'])->name('admin.cattle_export');
+        /* address support */
+        Route::resource('country', CountryController::class, ['names' => 'admin.country']);
+        Route::resource('division', DivisionController::class, ['names' => 'admin.division']);
+        Route::resource('district', DistrictController::class, ['names' => 'admin.district']);
+        Route::resource('upazilla', UpazillaController::class, ['names' => 'admin.upazilla']);
+        Route::resource('union', UnionController::class, ['names' => 'admin.union']);
+        Route::resource('village', VillageController::class, ['names' => 'admin.village']);
+        Route::resource('postoffice', PostofficeController::class, ['names' => 'admin.postoffice']);
+        Route::resource('zone', ZoneController::class, ['names' => 'admin.zone']);
+
     });
 });
 
@@ -82,6 +98,9 @@ Route::group(['middleware'=>'isAdmin'],function(){
 Route::group(['middleware'=>'isUser'],function(){
     Route::prefix('user')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'user'])->name('user.dashboard');
+
+        Route::resource('cattle', CattleController::class, ['names' => 'user.cattle']);
+        Route::get('/cattle_export', [CattleController::class, 'cattle_export'])->name('user.cattle_export');
 
     });
 });

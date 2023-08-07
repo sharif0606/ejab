@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThanasTable extends Migration
+class CreateUnionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateThanasTable extends Migration
      */
     public function up()
     {
-        Schema::create('thanas', function (Blueprint $table) {
+        Schema::create('unions', function (Blueprint $table) {
             $table->id();
             $table->integer('upazilla_id');
-            $table->string('thana');
+            $table->string('union');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateThanasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('thanas');
+        Schema::dropIfExists('unions');
     }
 }

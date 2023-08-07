@@ -38,6 +38,18 @@ select {
 					@method('PUT')
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
+								<div class="form-group">
+									<label>Select Zone <span class="text-danger">*</span></label>
+									<select class="form-control" name="zone_id">
+									    @if($allZone)
+    									    @foreach($allZone as $zone)
+    									        <option value="{{$zone->id}}" @if($zone->id == $division->zone_id) selected @endif>{{$zone->zone}}</option>
+    									    @endforeach
+									    @endif
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group @if($errors->has('division')) has-error @endif">
 									<label>Division Name <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
@@ -51,18 +63,6 @@ select {
 											{{ $errors->first('division') }}
 										</div>
 									@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6 hidden">
-								<div class="form-group">
-									<label>Select Country</label>
-									<select class="form-control" name="country_id">
-									    @if($allCountry)
-    									    @foreach($allCountry as $country)
-    									        <option value="{{$country->id}}" @if($country->id == $division->country_id) selected @endif>{{$country->code}}-{{$country->country}}</option>
-    									    @endforeach
-									    @endif
-									</select>
 								</div>
 							</div>
 						</div>

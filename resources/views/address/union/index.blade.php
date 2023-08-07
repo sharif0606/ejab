@@ -1,13 +1,12 @@
 @extends('layout.app')
-@section('title','Division')
+@section('title','Union')
 @section('content')
 <div class="page-header">
     <h1>
-        Division
+        Union
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Division List
-            <a class="btn btn-primary pull-right" href="{{route(currentUser().'.division.create')}}">Add New</a>
+            Union List
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -20,7 +19,7 @@
         </div>
     @endif
 
-    
+    <a class="btn btn-primary pull-right" href="{{route(currentUser().'.union.create')}}">Add New</a>
         <!-- PAGE CONTENT BEGINS -->
         <table class="table">
             <thead>
@@ -28,25 +27,30 @@
                     <th>#SL</th>
                     <th>Zone</th>
                     <th>Division</th>
+                    <th>District</th>
+                    <th>Upazilla</th>
+                    <th>Union</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @if($division)
-                    @foreach($division as $i=>$u)
+                @if($union)
+                    @foreach($union as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->zone?->zone}}</td>
-                            <td>{{$u->division}}</td>
+                            <td>{{$u->upazilla?->district?->division?->zone?->zone}}</td>
+                            <td>{{$u->upazilla?->district?->division?->division}}</td>
+                            <td>{{$u->upazilla?->district?->district}}</td>
+                            <td>{{$u->upazilla?->upazilla}}</td>
+                            <td>{{$u->union}}</td>
                             <td>
-                                <a href="{{route(currentUser().'.division.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
+                                <a href="{{route(currentUser().'.union.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 @endif
             </tbody>
         </table>
-		{{ $division->links() }}
     </div>
 </div>
 

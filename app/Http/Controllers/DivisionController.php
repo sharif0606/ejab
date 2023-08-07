@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
 use App\Models\Division;
+use App\Models\Zone;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 
@@ -28,8 +28,8 @@ class DivisionController extends Controller
      */
     public function create()
     {
-        $allCountry = Country::all();
-        return view('address.division.create',compact('allCountry'));
+        $allZone = Zone::all();
+        return view('address.division.create',compact('allZone'));
     }
 
     /**
@@ -43,9 +43,7 @@ class DivisionController extends Controller
         try{
             $data=new Division;
             $data->division=$request->division;
-            $data->country_id=$request->country_id;
-
-            
+            $data->zone_id=$request->zone_id;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.division.index'))->with($this->responseMessage(true,null,"Data successfully created."));
             }
@@ -74,8 +72,8 @@ class DivisionController extends Controller
      */
     public function edit(Division $division)
     {
-         $allCountry = Country::all();
-         return view('address.division.edit',compact('division','allCountry'));
+        $allZone = Zone::all();
+         return view('address.division.edit',compact('division','allZone'));
     }
 
     /**
@@ -90,7 +88,7 @@ class DivisionController extends Controller
         try{
             
             $division->division=$request->division;
-            $division->country_id=$request->country_id;
+            $division->zone_id=$request->zone_id;
             
             if(!!$division->save()){
                 return redirect(route(currentUser().'.division.index'))->with($this->responseMessage(true,null,"Data successfully Updated."));

@@ -6,15 +6,15 @@ use App\Models\Cattle;
 use Illuminate\Http\Request;
 
 use App\Models\Country;
+use App\Models\Zone;
 use App\Models\Division;
 use App\Models\District;
-use App\Models\Zone;
+use App\Models\Upazilla;
+use App\Models\Union;
 
 use App\Models\BloodRate;
 use App\Models\Breed;
 use App\Models\Color;
-//use App\Models\Upazilla;
-//use App\Models\Thana;
 //use App\Models\Village;
 //use App\Models\Postoffice;
 
@@ -37,10 +37,42 @@ class CattleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cattle=Cattle::paginate(15);
-        return view('cattle.index',compact('cattle'));
+        $zone=Zone::all();
+        $color=Color::all();
+        $blood=BloodRate::all();
+        $breed=Breed::all();
+        $division=Division::all();
+        $district=District::all();
+        $upazilla=Upazilla::all();
+        $union=Union::all();
+
+        $cattle=Cattle::latest();
+       
+        if($request->zone_id)
+            $cattle=$cattle->where('zone_id',$request->zone_id);
+        if($request->division_id)
+            $cattle=$cattle->where('division_id',$request->division_id);
+        if($request->district_id)
+            $cattle=$cattle->where('district_id',$request->district_id);
+        if($request->upazilla_id)
+            $cattle=$cattle->where('upazilla_id',$request->upazilla_id);
+        if($request->union_id)
+            $cattle=$cattle->where('union_id',$request->union_id);
+        if($request->bull_breed)
+            $cattle=$cattle->where('bull_breed',$request->bull_breed);
+        if($request->blood_qty)
+            $cattle=$cattle->where('blood_qty',$request->blood_qty);
+        if($request->calf_gender)
+            $cattle=$cattle->where('calf_gender',$request->calf_gender);
+        if($request->calf_color)
+            $cattle=$cattle->where('calf_color',$request->calf_color);
+
+        $cattle=$cattle->paginate(15);
+
+
+        return view('cattle.index',compact('zone','division','district','breed','blood','color','upazilla','union','cattle'));
     }
     
     /**
@@ -64,11 +96,11 @@ class CattleController extends Controller
         $breed=Breed::all();
         $division=Division::all();
         $district=District::all();
-        //$upazilla=Upazilla::all();
-        //$thana=Thana::all();
+        $upazilla=Upazilla::all();
+        $union=Union::all();
         //$village=Village::all();
         //$postoffice=Postoffice::all();
-        return view('cattle.create',compact('zone','division','district','breed','blood','color'));
+        return view('cattle.create',compact('zone','division','district','breed','blood','color','upazilla','union'));
     }
 
     /**
@@ -84,12 +116,12 @@ class CattleController extends Controller
             $cattle->serial_no=$request->serial_no;
             $cattle->beneficiary_name=$request->beneficiary_name;
             $cattle->f_or_h_name=$request->f_or_h_name;
-            $cattle->zone_id=$request->zone_id;
             $cattle->country_id=1;
+            $cattle->zone_id=$request->zone_id;
             $cattle->division_id=$request->division_id;
             $cattle->district_id=$request->district_id;
-            $cattle->upazilla=$request->upazilla;
-            $cattle->union=$request->union;
+            $cattle->upazilla_id=$request->upazilla_id;
+            $cattle->union_id=$request->union_id;
             $cattle->postoffice=$request->postoffice;
             $cattle->village=$request->village;
             $cattle->beneficiary_contact=$request->beneficiary_contact;
@@ -162,11 +194,11 @@ class CattleController extends Controller
         $breed=Breed::all();
         $division=Division::all();
         $district=District::all();
-        //$upazilla=Upazilla::all();
-        //$thana=Thana::all();
+        $upazilla=Upazilla::all();
+        $union=Union::all();
         //$village=Village::all();
         //$postoffice=Postoffice::all();
-        return view('cattle.edit',compact('cattle','zone','division','district','breed','blood','color'));
+        return view('cattle.edit',compact('cattle','zone','division','district','breed','blood','color','union','upazilla'));
     }
 
     /**
@@ -182,11 +214,12 @@ class CattleController extends Controller
             $cattle->serial_no=$request->serial_no;
             $cattle->beneficiary_name=$request->beneficiary_name;
             $cattle->f_or_h_name=$request->f_or_h_name;
+            $cattle->country_id=1;
             $cattle->zone_id=$request->zone_id;
             $cattle->division_id=$request->division_id;
             $cattle->district_id=$request->district_id;
-            $cattle->upazilla=$request->upazilla;
-            $cattle->union=$request->union;
+            $cattle->upazilla_id=$request->upazilla_id;
+            $cattle->union_id=$request->union_id;
             $cattle->postoffice=$request->postoffice;
             $cattle->village=$request->village;
             $cattle->beneficiary_contact=$request->beneficiary_contact;

@@ -38,6 +38,19 @@ select {
 					@method('PUT')
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
+								<div class="form-group">
+									<label>Select Divistion</label>
+									<select class="form-control" name="division_id">
+									    <option value="">Select Divistion</option>
+									    @if($allDivision)
+											@foreach($allDivision as $dv)
+												<option value="{{$dv->id}}" @if($dv->id == $district->division_id) selected @endif>{{$dv->division}}</option>
+											@endforeach
+									    @endif
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group @if($errors->has('district')) has-error @endif">
 									<label>District Name <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
@@ -51,19 +64,6 @@ select {
 											{{ $errors->first('district') }}
 										</div>
 									@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group">
-									<label>Select Divistion</label>
-									<select class="form-control" name="division_id">
-									    <option value="">Select Divistion</option>
-									    @if($allDivision)
-									    @foreach($allDivision as $dv)
-									    <option value="{{$dv->id}}" @if($dv->id == $district->division_id) selected @endif>{{$dv->division}}</option>
-									    @endforeach
-									    @endif
-									</select>
 								</div>
 							</div>
 						</div>
