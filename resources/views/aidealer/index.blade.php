@@ -135,10 +135,10 @@
                                 <td>{{$u->name}}</td>
                                 <td>
                                     <b>Union-</b>{{$u->union?->union}},
-                                    <b>Upazilla-</b>{{$u->upazilla?->upazilla}},
-                                    <b>District-</b>{{$u->district?->district}},
-                                    <b>Division-</b>{{$u->division?->division}},
-                                    <b>Zone-</b>{{$u->zone?->zone}}<br>
+                                    <b>Upazilla-</b>{{$u->upazilla?$u->upazilla->upazilla:""}},
+                                    <b>District-</b>{{$u->district?$u->district->district:""}},
+                                    <b>Division-</b>{{$u->division?$u->division->division:""}},
+                                    <b>Zone-</b>{{$u->zone?$u->zone->zone:""}}<br>
                                     <b>Contact-</b>{{$u->contact_number}}
                                 </td>
                                 <td>{{$u->ai_technician_name}}</td>
