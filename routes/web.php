@@ -46,8 +46,8 @@ Route::group(['middleware'=>'UnknownUser'],function(){
     Route::get('/sign-in', [authCtrl::class, 'signInForm'])->name('signin');
     Route::post('/sign-in', [authCtrl::class, 'signIn'])->name('signin.varify');
 
-    //Route::get('/sign-up', [authCtrl::class, 'signUpForm'])->name('signup');
-    //Route::post('/sign-up', [authCtrl::class, 'signUpStore'])->name('signUpStore');
+    Route::get('/sign-up', [authCtrl::class, 'signUpForm'])->name('signup');
+    Route::post('/sign-up', [authCtrl::class, 'signUpStore'])->name('signUpStore');
 
     Route::get('/forget-password', [authCtrl::class, 'forgetForm'])->name('forget');
 });
