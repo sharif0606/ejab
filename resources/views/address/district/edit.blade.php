@@ -41,7 +41,6 @@ select {
 								<div class="form-group">
 									<label>Select Divistion</label>
 									<select class="form-control" name="division_id">
-									    <option value="">Select Divistion</option>
 									    @if($allDivision)
 											@foreach($allDivision as $dv)
 												<option value="{{$dv->id}}" @if($dv->id == $district->division_id) selected @endif>{{$dv->division}}</option>

@@ -13,9 +13,6 @@ use App\Models\Union;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\Cattle\CreateCattle;
-use App\Http\Requests\Cattle\UpdateCattle;
-
 use App\Http\Traits\ResponseTrait;
 
 use Exception;
@@ -25,6 +22,7 @@ use Carbon\Carbon;
 
 class AiDealerController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -88,7 +86,32 @@ class AiDealerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $aiDealer=new AiDealer;
+            $aiDealer->country_id=1;
+            $aiDealer->zone_id=$request->zone_id;
+            $aiDealer->division_id=$request->division_id;
+            $aiDealer->district_id=$request->district_id;
+            $aiDealer->upazilla_id=$request->upazilla_id;
+            $aiDealer->union_id=$request->union_id;
+
+            $aiDealer->name=$request->name;
+            $aiDealer->contact_number=$request->contact_number;
+            $aiDealer->address=$request->address;
+            $aiDealer->training_institute=$request->training_institute;
+            $aiDealer->ejab_batch_no=$request->ejab_batch_no;
+
+            $aiDealer->ai_technician_name=$request->ai_technician_name;
+            $aiDealer->ai_technician_id=$request->ai_technician_id;
+            $aiDealer->ai_technician_contact=$request->ai_technician_contact;
+
+            if(!!$aiDealer->save()){
+                return redirect(route(currentUser().'.aidealer.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
+            }
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
+        }
     }
 
     /**
@@ -97,7 +120,7 @@ class AiDealerController extends Controller
      * @param  \App\Models\AiDealer  $aiDealer
      * @return \Illuminate\Http\Response
      */
-    public function show(AiDealer $aiDealer)
+    public function show(AiDealer $aidealer)
     {
         //
     }
@@ -108,9 +131,14 @@ class AiDealerController extends Controller
      * @param  \App\Models\AiDealer  $aiDealer
      * @return \Illuminate\Http\Response
      */
-    public function edit(AiDealer $aiDealer)
+    public function edit(AiDealer $aidealer)
     {
-        //
+        $zone=Zone::all();
+        $division=Division::all();
+        $district=District::all();
+        $upazilla=Upazilla::all();
+        $union=Union::all();
+        return view('aidealer.edit',compact('aidealer','zone','division','district','union','upazilla'));
     }
 
     /**
@@ -120,9 +148,33 @@ class AiDealerController extends Controller
      * @param  \App\Models\AiDealer  $aiDealer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AiDealer $aiDealer)
+    public function update(Request $request, AiDealer $aidealer)
     {
-        //
+        try{
+            $aidealer->country_id=1;
+            $aidealer->zone_id=$request->zone_id;
+            $aidealer->division_id=$request->division_id;
+            $aidealer->district_id=$request->district_id;
+            $aidealer->upazilla_id=$request->upazilla_id;
+            $aidealer->union_id=$request->union_id;
+
+            $aidealer->name=$request->name;
+            $aidealer->contact_number=$request->contact_number;
+            $aidealer->address=$request->address;
+            $aidealer->training_institute=$request->training_institute;
+            $aidealer->ejab_batch_no=$request->ejab_batch_no;
+
+            $aidealer->ai_technician_name=$request->ai_technician_name;
+            $aidealer->ai_technician_id=$request->ai_technician_id;
+            $aidealer->ai_technician_contact=$request->ai_technician_contact;
+
+            if(!!$aidealer->save()){
+                return redirect(route(currentUser().'.aidealer.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
+            }
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
+        }
     }
 
     /**
@@ -131,8 +183,14 @@ class AiDealerController extends Controller
      * @param  \App\Models\AiDealer  $aiDealer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AiDealer $aiDealer)
+    public function destroy(AiDealer $aidealer)
     {
-        //
+        try{
+            if(!!$aidealer->delete()){
+                return redirect()->back()->with($this->responseMessage(true,null,"Data successfully deleted."));
+            }
+        }catch(Exception $e){
+            return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
+        }
     }
 }

@@ -7,7 +7,7 @@
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
             Division List
-            <a class="btn btn-primary pull-right" href="{{route(currentUser().'.division.create')}}">Add New</a>
+            <a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.division.create')}}">Add New</a>
         </small>
     </h1>
 </div><!-- /.page-header -->

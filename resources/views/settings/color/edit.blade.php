@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','Upazila Update')
+@section('title','Color Update')
 @push('style')
 <style>
 select {
@@ -11,10 +11,10 @@ select {
 @section('content')
 <div class="page-header">
     <h1>
-		Upazila
+		Color
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Upazila Add
+            Color Add
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -29,38 +29,26 @@ select {
         <!-- PAGE CONTENT BEGINS -->
         <div class="widget-box">
 			<div class="widget-header widget-header-small">
-				<h5 class="widget-title lighter">Upazila Update Form</h5>
+				<h5 class="widget-title lighter">Color Update Form</h5>
 			</div>
 			<div class="widget-body">
 				<div class="widget-main">
-					<form action="{{route(currentUser().'.upazilla.update',$upazilla->id)}}" method="post" class="form-search">
+					<form action="{{route(currentUser().'.color.update',$color->id)}}" method="post" class="form-search">
 					@csrf
 					@method('PUT')
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
-								<div class="form-group">
-									<label>Select District</label>
-									<select class="form-control" name="district_id">
-									    @if($allDistrict)
-									    @foreach($allDistrict as $dv)
-									    <option value="{{$dv->id}}" @if($dv->id == $upazilla->district_id) selected @endif>{{$dv->district}}</option>
-									    @endforeach
-									    @endif
-									</select>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('upazilla')) has-error @endif">
-									<label>Upazilla Name <span class="text-danger">*</span></label>
+								<div class="form-group @if($errors->has('color')) has-error @endif">
+									<label>Color Name <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="upazilla" value="{{ old('upazilla', $upazilla->upazilla) }}">
-										@if($errors->has('upazilla')) 
+										<input type="text" class="width-100" name="color" value="{{$color->color}}">
+										@if($errors->has('color')) 
 											<i class="ace-icon fa fa-times-circle"></i>
 										@endif
 									</span>
-									@if($errors->has('upazilla')) 
+									@if($errors->has('color')) 
 										<div class="help-block col-sm-reset">
-											{{ $errors->first('upazilla') }}
+											{{ $errors->first('color') }}
 										</div>
 									@endif
 								</div>

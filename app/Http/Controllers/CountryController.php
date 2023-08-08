@@ -47,7 +47,6 @@ class CountryController extends Controller
                 return redirect(route(currentUser().'.country.index'))->with($this->responseMessage(true,null,"Data successfully created."));
             }
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
         }
     }
@@ -93,7 +92,6 @@ class CountryController extends Controller
                 return redirect(route(currentUser().'.country.index'))->with($this->responseMessage(true,null,"Data successfully created."));
             }
         }catch(Exception $e){
-            dd($e);
             return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
         }
     }

@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','Dealer Add')
+@section('title','Dealer & Technician Add')
 @push('style')
 <link rel="stylesheet" href="{{asset('public/assets/css/chosen.min.css')}}"/>
 <style>
@@ -20,10 +20,10 @@ hr {
 @section('content')
 <div class="page-header">
     <h1>
-		Dealer
+		Dealer & Technician
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Dealer Add
+            Dealer & Technician Add
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -124,98 +124,37 @@ hr {
 					    </div>
 						<hr/>
 						<div class="row">
-							<div class="col-xs-12 col-sm-3">
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
-									<label> বকনা বা গাভীর বয়স </label>
+									<label> Dealer Name</label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_age" value="{{old('cow_age')}}">
+										<input type="text" class="width-100" name="name" value="{{old('name')}}">
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3">
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
-									<label> জাত/রক্তের হার  </label>
+									<label> Dealer Contact  </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_breed" value="{{old('cow_breed')}}">
-									</span>
-								</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>গায়ের রং </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_color" value="{{old('cow_color')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>ওজন (কেজি) </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_weight" value="{{old('cow_weight')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>মোট বাচ্চা দেওয়ার সংখ্যা  </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_number_of_baby" value="{{old('cow_number_of_baby')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>সর্বশেষ বাচ্চা প্রসবের তারিখ   </label>
-									<span class="block input-icon input-icon-right">
-										<input type="date" class="width-100" name="cow_last_delivery" value="{{old('cow_last_delivery')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বকনা/গাভীর দুধ উৎপাদন ক্ষমতা/দিন(লিটার)  </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_milking_qty" value="{{old('cow_milking_qty')}}">
-									</span>
-								</div>
-							</div>
-						</div>
-						<hr/>
-						<div class="row">
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>কৃত্রিম প্রজনন করার তারিখ   </label>
-									<span class="block input-icon input-icon-right">
-										<input type="date" class="width-100" name="cow_pregnant_date" value="{{old('cow_pregnant_date')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>ষাড়ের নাম   </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="bull_name" value="{{old('bull_name')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>ষাড়ের নাম্বার   </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="bull_number" value="{{old('bull_number')}}">
+										<input type="text" class="width-100" name="contact_number" value="{{old('contact_number')}}">
 									</span>
 								</div>
 							</div>
 							
+							<div class="col-xs-12">
+								<div class="form-group">
+									<label>Dealer Address </label>
+									<span class="block input-icon input-icon-right">
+										<textarea class="width-100" rows="2" name="address">{{old('address')}}</textarea>
+									</span>
+								</div>
+							</div>
 						</div>
-						
 						<hr/>
 						<div class="row">
 						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label> এআই টেকনিশিয়ানের নাম</label>
+									<label> AI Technician Name</label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="ai_technician_name" value="{{old('ai_technician_name')}}">
 									</span>
@@ -223,7 +162,7 @@ hr {
 							</div>
 						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label> আইডি/রেজিঃ নং </label>
+									<label> ID/Reg. No </label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="ai_technician_id" value="{{old('ai_technician_id')}}">
 									</span>
@@ -231,61 +170,28 @@ hr {
 							</div>
 							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label> মোবাইল নাম্বার </label>
+									<label> AI Technician Contact </label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="ai_technician_contact" value="{{old('ai_technician_contact')}}">
 									</span>
 								</div>
 							</div>
 						</div>
+						<hr/>
 						<div class="row">
-							<div class="col-xs-12">
+						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label>মন্তব্য </label>
+									<label> Training Institute</label>
 									<span class="block input-icon input-icon-right">
-										<textarea class="width-100" rows="2" name="remarks">{{old('remarks')}}</textarea>
+										<input type="text" class="width-100" name="training_institute" value="{{old('training_institute','Ejab')}}">
 									</span>
 								</div>
 							</div>
-						</div>
-						<hr style="border-top: 3px dashed red;"/>
-						<div class="row">
-							<div class="col-xs-12 col-sm-3">
+						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label> বাচ্চা প্রসবের প্রকৃত তারিখ  </label>
+									<label> Batch No </label>
 									<span class="block input-icon input-icon-right">
-										<input readonly type="date" class="width-100" name="delivery_date" value="{{old('delivery_date')}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>সদ্যজাত বাছুরের লিঙ্গ   </label>
-									<span class="block input-icon input-icon-right">
-										<select readonly class="width-100" name="calf_gender">
-										    <option value=""> লিঙ্গ নির্বাচন করুন </option>
-										    <option disabled value="1" @if(1==old('calf_gender')) selected @endif> ষাঁড় </option>
-										    <option disabled value="0" @if(0==old('calf_gender')) selected @endif> বকনা  </option>
-										</select>
-									</span>
-								</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাছুরের ওজন (কেজি)  </label>
-									<span class="block input-icon input-icon-right">
-										<input readonly type="text" class="width-100" name="calf_weight" value="{{old('calf_weight')}}">
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-group">
-									<label>মন্তব্য </label>
-									<span class="block input-icon input-icon-right">
-										<textarea class="width-100" rows="2" name="remarks_final">{{old('remarks_final')}}</textarea>
+										<input type="text" class="width-100" name="ejab_batch_no" value="{{old('ejab_batch_no')}}">
 									</span>
 								</div>
 							</div>

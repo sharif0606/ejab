@@ -1,14 +1,14 @@
 @extends('layout.app')
-@section('title','Zone')
+@section('title','Color')
 @section('content')
 <div class="page-header">
     <h1>
-        Zone
+        Color
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Zone List
-            <a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.zone.create')}}">Add New</a>
+            Color List
         </small>
+        <a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.color.create')}}">Add New</a>
     </h1>
 </div><!-- /.page-header -->
 
@@ -20,37 +20,37 @@
         </div>
     @endif
 
+    
         <!-- PAGE CONTENT BEGINS -->
         <table class="table">
             <thead>
                 <tr>
                     <th>#SL</th>
-                    <th>Country</th>
-                    <th>Name</th>
+                    <th>Color</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @if($zone)
-                    @foreach($zone as $i=>$u)
+                @if($color)
+                    @foreach($color as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->country?$u->country->country:""}}</td>
-                            <td>{{$u->zone}}</td>
+                            <td>{{$u->color}}</td>
                             <td>
-                                <a href="{{route(currentUser().'.zone.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
+                                <a href="{{route(currentUser().'.color.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 @endif
             </tbody>
         </table>
-		{{ $zone->links() }}
+		{{ $color->links() }}
     </div>
 </div>
 
 @endsection
 
 @push('script')
+
 
 @endpush

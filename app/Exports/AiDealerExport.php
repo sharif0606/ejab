@@ -24,8 +24,8 @@ class AiDealerExport implements FromView
         }else{
             $data=AiDealer::all();
         }
-        return view('cattle.export', [
-            'cattle' => $data
+        return view('aidealer.export', [
+            'aidealer' => $data
         ]);
     }
     

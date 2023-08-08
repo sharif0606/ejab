@@ -63,9 +63,8 @@ var text = "I told you so!";
                             <td>{{$u->zone?$u->zone->zone:"নেই"}}</td>
                             <td>{{$u->division?$u->division->division:"নেই"}},</td>
                             <td>{{$u->district?$u->district->district:"নেই"}}</td>
-                            <td>{{$u->upazilla}}</td>
-                            <td>{{$u->disease_description}}</td>
-                            <td>{{$u->thana}}</td>
+                            <td>{{$u->upazilla?$u->upazilla->upazilla:"নেই"}}</td>
+                            <td>{{$u->union?$u->union->union:"নেই"}}</td>
                             <td>{{$u->postoffice}}</td>
                             <td>{{$u->village}}</td>
                             <td>{{$u->cow_age}}</td>

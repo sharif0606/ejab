@@ -55,7 +55,7 @@ hr {
 								<div class="form-group">
 									<label>#SL No <span class="text-danger">*</span> </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" maxlength="8" required class="width-100" name="serial_no" value="{{old('serial_no',$cattle->serial_no)}}">
+										<input type="text" required class="width-100" name="serial_no" value="{{old('serial_no',$cattle->serial_no)}}">
 									</span>
 									@if ($errors->has('serial_no'))
         								<span class="text-danger">{{ $errors->first('serial_no') }}</span>

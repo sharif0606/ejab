@@ -10,9 +10,9 @@ class DashboardController extends Controller
         return view('dashboard.superadmin');
     }
     public function admin(){
-        echo "found";
+        return view('dashboard.admin');
     }
     public function user(){
-        echo "found";
+        return view('dashboard.user');
     }
 }

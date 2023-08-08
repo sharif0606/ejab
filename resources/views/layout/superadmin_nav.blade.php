@@ -23,6 +23,17 @@
 			<li class="hover"><a href="{{route(currentUser().'.postoffice.index')}}">Postoffice</a></li> --}}
 		</ul>
 	</li>
+	<li class="open hover">
+		<a href="#" class="dropdown-toggle">
+			<span class="menu-text"> Settings </span>
+			<b class="arrow fa fa-angle-down"></b>
+		</a>
+		<ul class="submenu">
+			<li class="hover"><a href="{{route(currentUser().'.color.index')}}">Color</a></li>
+			<li class="hover"><a href="{{route(currentUser().'.bloodrate.index')}}">Blood Rate</a></li>
+			<li class="hover"><a href="{{route(currentUser().'.breed.index')}}">Breed</a></li>
+		</ul>
+	</li>
 	<li class="hover">
 		<a href="{{route(currentUser().'.users.index')}}"><span class="menu-text"> Users </span></a>
 		<b class="arrow"></b>

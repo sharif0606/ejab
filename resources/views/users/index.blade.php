@@ -7,6 +7,7 @@
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
             User List
+			<a class="btn btn-primary pull-right btn-sm" href="{{route('users.create')}}">Add New</a>
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -19,7 +20,6 @@
         </div>
     @endif
 
-    <a class="btn btn-primary pull-right" href="{{route('users.create')}}">Add New</a>
         <!-- PAGE CONTENT BEGINS -->
         <table class="table">
             <thead>

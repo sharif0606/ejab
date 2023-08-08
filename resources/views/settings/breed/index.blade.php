@@ -1,14 +1,14 @@
 @extends('layout.app')
-@section('title','Zone')
+@section('title','Breed')
 @section('content')
 <div class="page-header">
     <h1>
-        Zone
+        Breed
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Zone List
-            <a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.zone.create')}}">Add New</a>
+            Breed List
         </small>
+        <a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.breed.create')}}">Add New</a>
     </h1>
 </div><!-- /.page-header -->
 
@@ -19,38 +19,36 @@
         {{Session::get('response')['message']}}
         </div>
     @endif
-
-        <!-- PAGE CONTENT BEGINS -->
+   <!-- PAGE CONTENT BEGINS -->
         <table class="table">
             <thead>
                 <tr>
                     <th>#SL</th>
-                    <th>Country</th>
-                    <th>Name</th>
+                    <th>Breed</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @if($zone)
-                    @foreach($zone as $i=>$u)
+                @if($breed)
+                    @foreach($breed as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->country?$u->country->country:""}}</td>
-                            <td>{{$u->zone}}</td>
+                            <td>{{$u->breed}}</td>
                             <td>
-                                <a href="{{route(currentUser().'.zone.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
+                                <a href="{{route(currentUser().'.breed.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 @endif
             </tbody>
         </table>
-		{{ $zone->links() }}
+		{{ $breed->links() }}
     </div>
 </div>
 
 @endsection
 
 @push('script')
+
 
 @endpush

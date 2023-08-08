@@ -49,7 +49,7 @@ hr {
 								<div class="form-group">
 									<label>#SL No <span class="text-danger">*</span> </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" maxlength="8" required class="width-100" name="serial_no" value="{{old('serial_no')}}">
+										<input type="text" required class="width-100" name="serial_no" value="{{old('serial_no')}}">
 									</span>
 									@if ($errors->has('serial_no'))
         								<span class="text-danger">{{ $errors->first('serial_no') }}</span>
@@ -252,7 +252,7 @@ hr {
 							</div>
 							<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
-									<label>ষাড়ের নাম   </label>
+									<label>ষাড়ের নাম </label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="bull_name" value="{{old('bull_name')}}">
 									</span>
@@ -260,7 +260,7 @@ hr {
 							</div>
 							<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
-									<label>ষাড়ের নাম্বার   </label>
+									<label>ষাড়ের নাম্বার </label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="bull_number" value="{{old('bull_number')}}">
 									</span>

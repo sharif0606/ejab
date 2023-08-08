@@ -41,7 +41,6 @@ select {
 								<div class="form-group">
 									<label>Select Upazila</label>
 									<select class="form-control" name="upazilla_id">
-									    <option value="">Select upazilla</option>
 									    @if($allUpazilla)
 											@foreach($allUpazilla as $u)
 												<option value="{{$u->id}}" @if($u->id == $union->upazilla_id) selected @endif>{{$u->upazilla}}</option>

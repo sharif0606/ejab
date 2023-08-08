@@ -7,6 +7,7 @@
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
             Union List
+            <a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.union.create')}}">Add New</a>
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -18,8 +19,6 @@
         {{Session::get('response')['message']}}
         </div>
     @endif
-
-    <a class="btn btn-primary pull-right" href="{{route(currentUser().'.union.create')}}">Add New</a>
         <!-- PAGE CONTENT BEGINS -->
         <table class="table">
             <thead>

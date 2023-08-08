@@ -40,7 +40,6 @@ select {
 								<div class="form-group">
 									<label>Select Division</label>
 									<select class="form-control" name="division_id">
-									    <option value="">Select Division</option>
 									    @if($allDivision)
 											@foreach($allDivision as $division)
 												<option value="{{$division->id}}">{{$division->division}}</option>

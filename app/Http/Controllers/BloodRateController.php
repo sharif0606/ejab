@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\BloodRate;
 use Illuminate\Http\Request;
+use App\Http\Traits\ResponseTrait;
 
 class BloodRateController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class BloodRateController extends Controller
      */
     public function index()
     {
-        //
+        $bloodrate=BloodRate::latest()->paginate(10);
+        return view('settings.bloodrate.index',compact('bloodrate'));
     }
 
     /**
@@ -24,7 +27,7 @@ class BloodRateController extends Controller
      */
     public function create()
     {
-        //
+        return view('settings.bloodrate.create');
     }
 
     /**
@@ -35,7 +38,15 @@ class BloodRateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $data=new BloodRate;
+            $data->blood_rate=$request->blood_rate;
+            if(!!$data->save()){
+                return redirect(route(currentUser().'.bloodrate.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
+            }
+        }catch(Exception $e){
+            return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
+        }
     }
 
     /**
@@ -44,7 +55,7 @@ class BloodRateController extends Controller
      * @param  \App\Models\BloodRate  $bloodRate
      * @return \Illuminate\Http\Response
      */
-    public function show(BloodRate $bloodRate)
+    public function show(BloodRate $bloodrate)
     {
         //
     }
@@ -55,9 +66,9 @@ class BloodRateController extends Controller
      * @param  \App\Models\BloodRate  $bloodRate
      * @return \Illuminate\Http\Response
      */
-    public function edit(BloodRate $bloodRate)
+    public function edit(BloodRate $bloodrate)
     {
-        //
+        return view('settings.bloodrate.edit',compact('bloodrate'));
     }
 
     /**
@@ -67,9 +78,17 @@ class BloodRateController extends Controller
      * @param  \App\Models\BloodRate  $bloodRate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BloodRate $bloodRate)
+    public function update(Request $request, BloodRate $bloodrate)
     {
-        //
+        try{
+            $data=$bloodrate;
+            $data->blood_rate=$request->blood_rate;
+            if(!!$data->save()){
+                return redirect(route(currentUser().'.bloodrate.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
+            }
+        }catch(Exception $e){
+            return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
+        }
     }
 
     /**
@@ -78,7 +97,7 @@ class BloodRateController extends Controller
      * @param  \App\Models\BloodRate  $bloodRate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BloodRate $bloodRate)
+    public function destroy(BloodRate $bloodrate)
     {
         //
     }

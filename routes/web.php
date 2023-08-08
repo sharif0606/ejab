@@ -21,6 +21,13 @@ use App\Http\Controllers\ZoneController;
 
 /* /Address support */
 
+/* Settings */
+use App\Http\Controllers\ColorController;
+use App\Http\Controllers\BloodRateController;
+use App\Http\Controllers\BreedController;
+
+/* /Address support */
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,6 +77,11 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
         Route::resource('village', VillageController::class, ['names' => 'superadmin.village']);
         Route::resource('postoffice', PostofficeController::class, ['names' => 'superadmin.postoffice']);
         Route::resource('zone', ZoneController::class, ['names' => 'superadmin.zone']);
+
+        /* address support */
+        Route::resource('color', ColorController::class, ['names' => 'superadmin.color']);
+        Route::resource('bloodrate', BloodRateController::class, ['names' => 'superadmin.bloodrate']);
+        Route::resource('breed', BreedController::class, ['names' => 'superadmin.breed']);
         
     });
 });

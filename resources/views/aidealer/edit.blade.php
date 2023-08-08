@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','গবাদি পশু হালনাগাদ')
+@section('title','Dealer & Technician Update')
 @push('style')
 <link rel="stylesheet" href="{{asset('public/assets/css/chosen.min.css')}}"/>
 <style>
@@ -25,10 +25,10 @@ hr {
 @section('content')
 <div class="page-header">
     <h1>
-		গবাদি পশু
+		Dealer & Technician
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            গবাদি পশু হালনাগাদ
+            Dealer & Technician Update
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -43,64 +43,23 @@ hr {
         <!-- PAGE CONTENT BEGINS -->
         <div class="widget-box">
 			<div class="widget-header widget-header-small">
-				<h5 class="widget-title lighter">গবাদি পশু হালনাগাদ ফর্ম</h5>
+				<h5 class="widget-title lighter">Dealer & Technician Update Form</h5>
 			</div>
 			<div class="widget-body">
 				<div class="widget-main">
-					<form action="{{route(currentUser().'.cattle.update',$cattle->id)}}" method="post" class="form-search" enctype="multipart/form-data">
+					<form action="{{route(currentUser().'.aidealer.update',$aidealer->id)}}" method="post" class="form-search" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
-						<div class="row">
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>#SL No <span class="text-danger">*</span> </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" maxlength="8" required class="width-100" name="serial_no" value="{{old('serial_no',$cattle->serial_no)}}">
-									</span>
-									@if ($errors->has('serial_no'))
-        								<span class="text-danger">{{ $errors->first('serial_no') }}</span>
-        							@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>কৃত্রিম প্রজনন সুবিধা ভোগীর নাম</label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="beneficiary_name" value="{{old('beneficiary_name',$cattle->beneficiary_name)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>কৃত্রিম প্রজনন সুবিধা ভোগীর মোবাইল নাম্বার </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" required name="beneficiary_contact" value="{{old('beneficiary_contact',$cattle->beneficiary_contact)}}">
-									</span>
-									@if ($errors->has('beneficiary_contact'))
-        								<span class="text-danger">{{ $errors->first('beneficiary_contact') }}</span>
-        							@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাবা/স্বামীর নাম</label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="f_or_h_name" value="{{old('f_or_h_name',$cattle->f_or_h_name)}}">
-									</span>
-								</div>
-							</div>
-						</div>
-						<hr/>
-						<div class="row">
+					<div class="row">
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label> জোন </label>
+									<label> Zone </label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="zone_id" onchange="$('.pdiviop').hide();$('.pdiviop'+this.value).show()">
-										    <option value="">জোন নির্বাচন করুন </option>
+										    <option value="">Select Zone</option>
 										    @if($zone)
 										        @foreach($zone as $z)
-										            <option value="{{$z->id}}" @if($z->id==old('zone_id',$cattle->zone_id)) selected @endif >{{$z->zone}}</option>
+										            <option value="{{$z->id}}" @if($z->id==old('zone_id',$aidealer->zone_id)) selected @endif >{{$z->zone}}</option>
 										        @endforeach
 										    @endif
 										</select>
@@ -109,13 +68,13 @@ hr {
 					        </div>
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label> বিভাগ	</label>
+									<label> Division</label>
 									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="division_id" onchange="$('.pdist').hide();$('.pdist'+this.value).show()">
-										    <option value="">বিভাগ নির্বাচন করুন</option>
+										<select class="width-100 chosen-select" name="division_id" onchange="$('.pdist').hide();$('.pdist'+this.value).show()">
+										    <option value="">Select Division</option>
 										    @if($division)
 										        @foreach($division as $divi)
-										            <option value="{{$divi->id}}" @if($divi->id==old('division_id',$cattle->division_id)) selected @endif class="pdiviop pdiviop{{$divi->country_id}}">{{$divi->division}}</option>
+										            <option value="{{$divi->id}}" @if($divi->id==old('division_id',$aidealer->division_id)) selected @endif class="pdiviop pdiviop{{$divi->zone_id}}">{{$divi->division}}</option>
 										        @endforeach
 										    @endif
 										</select>
@@ -124,28 +83,28 @@ hr {
 					        </div>
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label>জেলা</label>
+									<label>District</label>
 									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="district_id">
-										    <option value="">জেলা নির্বাচন করুন </option>
+										<select class="width-100 chosen-select" name="district_id" onchange="$('.pupo').hide();$('.pupo'+this.value).show()">
+										    <option value="">Select District </option>
 										    @if($district)
 										        @foreach($district as $dist)
-										            <option value="{{$dist->id}}"  @if($dist->id==old('district_id',$cattle->district_id)) selected @endif class="pdist pdist{{$dist->division_id}}">{{$dist->district}}</option>
+										            <option value="{{$dist->id}}"  @if($dist->id==old('district_id',$aidealer->district_id)) selected @endif class="pdist pdist{{$dist->division_id}}">{{$dist->district}}</option>
 										        @endforeach
 										    @endif
 										</select>
 									</span>
 								</div>
 					        </div>
-							<div class="col-xs-12 col-sm-3">
+					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label>উপজেলা/থানা</label>
+									<label>Upazilla</label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="upazilla_id" onchange="$('.puni').hide();$('.puni'+this.value).show()">
-										    <option value="">উপজেলা/থানা নির্বাচন করুন </option>
+										    <option value="">Select Upazilla</option>
 										    @if($upazilla)
 										        @foreach($upazilla as $upo)
-										            <option value="{{$upo->id}}"  @if($upo->id==old('upazilla_id',$cattle->upazilla_id)) selected @endif class="pupo pupo{{$upo->district_id}}">{{$upo->upazilla}}</option>
+										            <option value="{{$upo->id}}"  @if($upo->id==old('upazilla_id',$aidealer->upazilla_id)) selected @endif class="pupo pupo{{$upo->district_id}}">{{$upo->upazilla}}</option>
 										        @endforeach
 										    @endif
 										</select>
@@ -154,291 +113,91 @@ hr {
 					        </div>
 					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
-									<label>ইউনিয়ন/পৌরসভা/ওয়ার্ড </label>
+									<label>Union</label>
 									<span class="block input-icon input-icon-right">
 										<select class="width-100 chosen-select" name="union_id">
-										    <option value="">ইউনিয়ন/পৌরসভা/ওয়ার্ড নির্বাচন করুন </option>
+										    <option value="">Select Union </option>
 										    @if($union)
 										        @foreach($union as $uni)
-										            <option value="{{$uni->id}}"  @if($uni->id==old('union_id',$cattle->union_id)) selected @endif class="puni puni{{$uni->upazilla_id}}">{{$uni->union}}</option>
+										            <option value="{{$uni->id}}"  @if($uni->id==old('union_id',$aidealer->union_id)) selected @endif class="puni puni{{$uni->upazilla_id}}">{{$uni->union}}</option>
 										        @endforeach
 										    @endif
 										</select>
 									</span>
 								</div>
 					        </div>
-					        
-					        <div class="col-xs-12 col-sm-3">
-    				            <div class="form-group">
-    								<label>পোষ্ট অফিস </label>
-    								<span class="block input-icon input-icon-right">
-    									<input type="text" class="width-100" name="postoffice" value="{{old('postoffice',$cattle->postoffice)}}">
-    								</span>
-    							</div>
-    				        </div>
-					        <div class="col-xs-12 col-sm-3">
-    				            <div class="form-group">
-    								<label> গ্রাম/মহল্লা  </label>
-    								<span class="block input-icon input-icon-right">
-    									<input type="text" class="width-100" name="village" value="{{old('village',$cattle->village)}}">
-    								</span>
-    							</div>
-    				        </div>
 					        
 					    </div>
 						<hr/>
 						<div class="row">
-							<div class="col-xs-12 col-sm-3">
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
-									<label> বকনা বা গাভীর বয়স </label>
+									<label> Dealer Name</label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_age" value="{{old('cow_age',$cattle->cow_age)}}">
+										<input type="text" class="width-100" name="name" value="{{old('name',$aidealer->name)}}">
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3">
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
-									<label> জাত  </label>
+									<label> Dealer Contact  </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_breed" value="{{old('cow_breed',$cattle->cow_breed)}}">
+										<input type="text" class="width-100" name="contact_number" value="{{old('contact_number',$aidealer->contact_number)}}">
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3">
+							
+							<div class="col-xs-12">
 								<div class="form-group">
-									<label> রক্তের হার </label>
+									<label>Dealer Address </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_blood_qty" value="{{old('cow_blood_qty',$cattle->cow_blood_qty)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>গায়ের রং </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_color" value="{{old('cow_color',$cattle->cow_color)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>ওজন (কেজি) </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_weight" value="{{old('cow_weight',$cattle->cow_weight)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>মোট বাচ্চা দেওয়ার সংখ্যা  </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_number_of_baby" value="{{old('cow_number_of_baby',$cattle->cow_number_of_baby)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>সর্বশেষ বাচ্চা প্রসবের তারিখ   </label>
-									<span class="block input-icon input-icon-right">
-										<input type="date" class="width-100" name="cow_last_delivery" value="{{old('cow_last_delivery',$cattle->cow_last_delivery)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বকনা/গাভীর দুধ উৎপাদন ক্ষমতা/দিন(লিটার)  </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="cow_milking_qty" value="{{old('cow_milking_qty',$cattle->cow_milking_qty)}}">
+										<textarea class="width-100" rows="2" name="address">{{old('address',$aidealer->address)}}</textarea>
 									</span>
 								</div>
 							</div>
 						</div>
 						<hr/>
 						<div class="row">
-							<div class="col-xs-12 col-sm-3">
+						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label>কৃত্রিম প্রজনন করার তারিখ   </label>
+									<label> AI Technician Name</label>
 									<span class="block input-icon input-icon-right">
-										<input type="date" class="width-100" name="cow_pregnant_date" value="{{old('cow_pregnant_date',$cattle->cow_pregnant_date)}}">
+										<input type="text" class="width-100" name="ai_technician_name" value="{{old('ai_technician_name',$aidealer->ai_technician_name)}}">
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3">
+						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label>ষাড়ের নাম   </label>
+									<label> ID/Reg. No </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="bull_name" value="{{old('bull_name',$cattle->bull_name)}}">
+										<input type="text" class="width-100" name="ai_technician_id" value="{{old('ai_technician_id',$aidealer->ai_technician_id)}}">
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3">
+							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label>ষাড়ের নাম্বার   </label>
+									<label> AI Technician Contact </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="bull_number" value="{{old('bull_number',$cattle->bull_number)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>ষাড়ের জাত  </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="bull_breed">
-										    <option value="">জাত নির্বাচন করুন </option>
-										    @if($breed)
-										        @foreach($breed as $br)
-										            <option value="{{$br->id}}" @if($br->id==old('bull_breed',$cattle->bull_breed)) selected @endif >{{$br->breed}}</option>
-										        @endforeach
-										    @endif
-										</select>
+										<input type="text" class="width-100" name="ai_technician_contact" value="{{old('ai_technician_contact',$aidealer->ai_technician_contact)}}">
 									</span>
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>রক্তের হার  </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="blood_qty">
-										    <option value=""> হার  নির্বাচন করুন </option>
-										    @if($blood)
-										        @foreach($blood as $bl)
-										            <option value="{{$bl->id}}" @if($bl->id==old('blood_qty',$cattle->blood_qty)) selected @endif >{{$bl->blood_rate}}</option>
-										        @endforeach
-										    @endif
-										</select>
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাচ্চা প্রসবের সম্ভাব্য তারিখ   </label>
-									<span class="block input-icon input-icon-right">
-										<input type="date" class="width-100" name="delivery_date_aprox" value="{{old('delivery_date_aprox',$cattle->delivery_date_aprox)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label> গর্ভপরিক্ষার ফলাফল (+/-)  </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="pregnancy_exam_result">
-										    <option value=""> ফলাফল নির্বাচন করুন </option>
-										    <option value="1" @if(1==old('pregnancy_exam_result',$cattle->pregnancy_exam_result)) selected @endif> (+)হ্যাঁ </option>
-										    <option value="0" @if(0==old('pregnancy_exam_result',$cattle->pregnancy_exam_result)) selected @endif> (-)না </option>
-										</select>
-									</span>
-								</div>
-							</div>
-						</div>
-						
-						
 						<hr/>
 						<div class="row">
-						    <div class="col-xs-12 col-sm-3">
+						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label> এআই টেকনিশিয়ানের নাম</label>
+									<label> Training Institute</label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="ai_technician_name" value="{{old('ai_technician_name',$cattle->ai_technician_name)}}">
+										<input type="text" class="width-100" name="training_institute" value="{{old('training_institute',$aidealer->training_institute)}}">
 									</span>
 								</div>
 							</div>
-						    <div class="col-xs-12 col-sm-3">
+						    <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label> আইডি/রেজিঃ নং </label>
+									<label> Batch No </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="ai_technician_id" value="{{old('ai_technician_id',$cattle->ai_technician_id)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label> মোবাইল নাম্বার </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="ai_technician_contact" value="{{old('ai_technician_contact',$cattle->ai_technician_contact)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label> অবস্থা  </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="status" required>
-										    <option value=""> অবস্থা নির্বাচন করুন </option>
-										    <option value="1" @if(1==old('status',$cattle->status)) selected @endif> সক্রিয় </option>
-										    <option value="0" @if(0==old('status',$cattle->status)) selected @endif> শেষ </option>
-										</select>
-									</span>
-									
-									@if ($errors->has('status'))
-        								<span class="text-danger">{{ $errors->first('status') }}</span>
-        							@endif
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-group">
-									<label>মন্তব্য </label>
-									<span class="block input-icon input-icon-right">
-										<textarea class="width-100" rows="3" name="remarks">{{old('remarks',$cattle->remarks)}}</textarea>
-									</span>
-								</div>
-							</div>
-						</div>
-						<hr style="border-top: 3px dashed red;"/>
-						<div class="row">
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label> বাচ্চা প্রসবের প্রকৃত তারিখ  </label>
-									<span class="block input-icon input-icon-right">
-										<input type="date" class="width-100" name="delivery_date" value="{{old('delivery_date',$cattle->delivery_date)}}">
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>সদ্যজাত বাছুরের লিঙ্গ   </label>
-									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="calf_gender">
-										    <option value=""> লিঙ্গ নির্বাচন করুন </option>
-										    <option value="1" @if(1==old('calf_gender',$cattle->calf_gender)) selected @endif> ষাঁড় </option>
-										    <option value="0" @if(0==old('calf_gender',$cattle->calf_gender)) selected @endif> বকনা  </option>
-										</select>
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাছুরের রং   </label>
-									<span class="block input-icon input-icon-right">
-									    <select class="width-100" name="calf_color">
-										    <option value=""> রং নির্বাচন করুন </option>
-										    @if($color)
-										        @foreach($color as $co)
-										            <option value="{{$co->id}}" @if($co->id==old('calf_color',$cattle->calf_color)) selected @endif >{{$co->color}}</option>
-										        @endforeach
-										    @endif
-										</select>
-									</span>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3">
-								<div class="form-group">
-									<label>বাছুরের ওজন (কেজি)  </label>
-									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="calf_weight" value="{{old('calf_weight',$cattle->calf_weight)}}">
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="form-group">
-									<label>মন্তব্য </label>
-									<span class="block input-icon input-icon-right">
-										<textarea class="width-100" rows="3" name="remarks_final">{{old('remarks_final',$cattle->remarks)}}</textarea>
+										<input type="text" class="width-100" name="ejab_batch_no" value="{{old('ejab_batch_no',$aidealer->ejab_batch_no)}}">
 									</span>
 								</div>
 							</div>

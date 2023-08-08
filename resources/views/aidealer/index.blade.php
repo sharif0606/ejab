@@ -1,12 +1,12 @@
 @extends('layout.app')
-@section('title','Ai Dealer')
+@section('title','Ai Dealer & Technician')
 @section('content')
 <div class="page-header">
     <h1>
-		Ai Dealer
+		Ai Dealer & Technician
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            Ai Dealer List
+            Ai Dealer & Technician List
         </small>
         <a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.aidealer.create')}}">Add New</a>
         <a class="btn btn-warning pull-right btn-sm" style="margin-right:5px" href="{{route(currentUser().'.aidealer_export')}}">Export Excel</a>
@@ -134,7 +134,7 @@
                                 <td>{{$u->serial_no}}</td>
                                 <td>{{$u->name}}</td>
                                 <td>
-                                    <b>Union-</b>{{$u->union?->union}},
+                                    <b>Union-</b>{{$u->union?$u->union->union:""}},
                                     <b>Upazilla-</b>{{$u->upazilla?$u->upazilla->upazilla:""}},
                                     <b>District-</b>{{$u->district?$u->district->district:""}},
                                     <b>Division-</b>{{$u->division?$u->division->division:""}},

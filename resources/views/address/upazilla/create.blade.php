@@ -37,6 +37,18 @@ select {
 					@csrf
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
+								<div class="form-group">
+									<label>Select District</label>
+									<select class="form-control" name="district_id">
+									    @if($allDistrict)
+									    @foreach($allDistrict as $district)
+									    <option value="{{$district->id}}">{{$district->district}}</option>
+									    @endforeach
+									    @endif
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group @if($errors->has('upazilla')) has-error @endif">
 									<label>Upazilla Name <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
@@ -50,19 +62,6 @@ select {
 											{{ $errors->first('upazilla') }}
 										</div>
 									@endif
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group">
-									<label>Select District</label>
-									<select class="form-control" name="district_id">
-									    <option value="">Select District</option>
-									    @if($allDistrict)
-									    @foreach($allDistrict as $district)
-									    <option value="{{$district->id}}">{{$district->district}}</option>
-									    @endforeach
-									    @endif
-									</select>
 								</div>
 							</div>
 						</div>

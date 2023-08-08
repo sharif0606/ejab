@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Color;
 use Illuminate\Http\Request;
+use App\Http\Traits\ResponseTrait;
 
 class ColorController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        $color=Color::latest()->paginate(10);
+        return view('settings.color.index',compact('color'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('settings.color.create');
     }
 
     /**
@@ -35,7 +38,15 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $data=new Color;
+            $data->color=$request->color;
+            if(!!$data->save()){
+                return redirect(route(currentUser().'.color.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
+            }
+        }catch(Exception $e){
+            return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
+        }
     }
 
     /**
@@ -57,7 +68,7 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-        //
+        return view('settings.color.edit',compact('color'));
     }
 
     /**
@@ -69,7 +80,15 @@ class ColorController extends Controller
      */
     public function update(Request $request, Color $color)
     {
-        //
+        try{
+            $data=$color;
+            $data->color=$request->color;
+            if(!!$data->save()){
+                return redirect(route(currentUser().'.color.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
+            }
+        }catch(Exception $e){
+            return redirect()->back()->with($this->responseMessage(false,"error","Please try again!"));
+        }
     }
 
     /**
