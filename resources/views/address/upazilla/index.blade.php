@@ -25,8 +25,6 @@
             <thead>
                 <tr>
                     <th>#SL</th>
-                    <th>Zone</th>
-                    <th>Division</th>
                     <th>District</th>
                     <th>Upazilla</th>
                     <th>Action</th>
@@ -37,9 +35,7 @@
                     @foreach($upazilla as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->district?->division?->zone?->zone}}</td>
-                            <td>{{$u->district?->division?->division}}</td>
-                            <td>{{$u->district?->district}}</td>
+                            <td>{{$u->district?$u->district->district:""}}</td>
                             <td>{{$u->upazilla}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.upazilla.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

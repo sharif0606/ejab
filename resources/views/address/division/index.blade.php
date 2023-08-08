@@ -36,7 +36,7 @@
                     @foreach($division as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->zone?->zone}}</td>
+                            <td>{{$u->zone?$u->zone->zone:""}}</td>
                             <td>{{$u->division}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.division.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

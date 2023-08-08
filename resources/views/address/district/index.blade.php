@@ -36,7 +36,7 @@
                     @foreach($district as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->division->zone?->zone}}</td>
+                            <td>{{$u->division->zone?$u->division->zone->zone:""}}</td>
                             <td>{{$u->division->division}}</td>
                             <td>{{$u->district}}</td>
                             <td>

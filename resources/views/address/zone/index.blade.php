@@ -35,7 +35,7 @@
                     @foreach($zone as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->country?->country}}</td>
+                            <td>{{$u->country?$u->country->country:""}}</td>
                             <td>{{$u->zone}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.zone.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
