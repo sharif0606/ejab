@@ -193,8 +193,8 @@
                                 <td>
                                     <b>গ্রাম/মহল্লা-</b>{{$u->village}},
                                     <b>পোষ্ট অফিস-</b>{{$u->postoffice}},<br>
-                                    <b>ইউনিয়ন/পৌরসভা/ওয়ার্ড-</b>{{$u->union?->union}},
-                                    <b>উপজেলা/থানা-</b>{{$u->upazilla?->upazilla}},<br>
+                                    <b>ইউনিয়ন/পৌরসভা/ওয়ার্ড-</b>{{$u->union?$u->union->union:"নেই"}},
+                                    <b>উপজেলা/থানা-</b>{{$u->upazilla?$u->upazilla->upazilla:"নেই"}},<br>
                                     <b>জেলা-</b>{{$u->district?$u->district->district:"নেই"}},
                                     <b>বিভাগ-</b>{{$u->division?$u->division->division:"নেই"}},
                                     <b>জোন-</b>{{$u->zone?$u->zone->zone:"নেই"}}

@@ -138,26 +138,26 @@ hr {
 					                
 					        <div class="col-xs-12">
 					            <div class="flex-container">
+        					        <div style="flex:40%">
+            				            <div class="flex-container">
+            								<label style="flex: 35%"> উপজেলা/থানা </label>
+            								<span style="flex: 65%" class="box-span">{{$cattle->upazilla?$cattle->upazilla->upazilla:"নেই"}}</span>
+            							</div>
+            				        </div>
 					                <div style="flex:60%">
             				            <div class="flex-container">
             								<label style="flex: 40%">ইউনিয়ন/পৌরসভা/ওয়ার্ড </label>
-            								<span style="flex: 60%" class="box-span">{{$cattle->union}}</span> 
+            								<span style="flex: 60%" class="box-span">{{$cattle->union?$cattle->union->union:"নেই"}}</span> 
             							</div>
     				                </div>
-        					        <div style="flex:40%">
-            				            <div class="flex-container">
-            								<label style="flex: 40%" class="pl-2">পোষ্ট অফিস </label>
-            								<span style="flex: 60%" class="box-span" >{{$cattle->postoffice}}</span>
-            							</div>
-            				        </div>
             				    </div>
             				</div>
             				<div class="col-xs-12">
 					            <div class="flex-container">
         					        <div style="flex:50%">
             				            <div class="flex-container">
-            								<label style="flex: 35%"> উপজেলা/থানা </label>
-            								<span style="flex: 65%" class="box-span">{{$cattle->postoffice}}</span>
+            								<label style="flex: 40%" class="pl-2">পোষ্ট অফিস </label>
+            								<span style="flex: 60%" class="box-span" >{{$cattle->postoffice}}</span>
             							</div>
             				        </div>
         					        <div style="flex:50%">
