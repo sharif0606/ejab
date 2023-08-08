@@ -16,7 +16,8 @@ class CreateVillagesTable extends Migration
         Schema::create('villages', function (Blueprint $table) {
             $table->id();
             $table->integer('thana_id');
-            $table->string('village');
+            $table->string('village')->collation('utf8mb4_unicode_ci');
+            $table->string('village_en');
             $table->timestamps();
         });
     }

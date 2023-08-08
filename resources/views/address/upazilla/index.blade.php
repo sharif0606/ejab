@@ -27,6 +27,7 @@
                     <th>#SL</th>
                     <th>District</th>
                     <th>Upazilla</th>
+                    <th>Upazilla (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$u->district?$u->district->district:""}}</td>
+                            <td>{{$u->upazilla_en}}</td>
                             <td>{{$u->upazilla}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.upazilla.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

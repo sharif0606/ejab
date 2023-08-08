@@ -16,8 +16,8 @@ class CreateZonesTable extends Migration
         Schema::create('zones', function (Blueprint $table) {
             $table->id();
             $table->integer('country_id');
-            $table->string('zone');
-            $table->string('zone_bn')->collation('utf8mb4_unicode_ci');
+            $table->string('zone')->nullable()->collation('utf8mb4_unicode_ci');
+            $table->string('zone_en')->nullable();
             $table->timestamps();
         });
     }

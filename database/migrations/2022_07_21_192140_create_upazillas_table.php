@@ -16,7 +16,8 @@ class CreateUpazillasTable extends Migration
         Schema::create('upazillas', function (Blueprint $table) {
             $table->id();
             $table->integer('district_id');
-            $table->string('upazilla');
+            $table->string('upazilla_en')->nullable();
+            $table->string('upazilla')->nullable()->collation('utf8mb4_unicode_ci');
             $table->timestamps();
         });
     }

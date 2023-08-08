@@ -40,6 +40,7 @@ class BreedController extends Controller
     {
         try{
             $data=new Breed;
+            $data->breed_en=$request->breed_en;
             $data->breed=$request->breed;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.breed.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
@@ -82,6 +83,7 @@ class BreedController extends Controller
     {
         try{
             $data=$breed;
+            $data->breed_en=$request->breed_en;
             $data->breed=$request->breed;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.breed.index'))->with($this->responseMessage(true,null,"Data successfully saved."));

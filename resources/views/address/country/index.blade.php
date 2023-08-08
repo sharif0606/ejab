@@ -25,6 +25,7 @@
                 <tr>
                     <th>#SL</th>
                     <th>Name</th>
+                    <th>Name (Bangla)</th>
                     <th>Code</th>
                     <th>Action</th>
                 </tr>
@@ -34,6 +35,7 @@
                     @foreach($country as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
+                            <td>{{$u->country_en}}</td>
                             <td>{{$u->country}}</td>
                             <td>{{$u->code}}</td>
                             <td>

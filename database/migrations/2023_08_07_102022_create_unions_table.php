@@ -16,7 +16,8 @@ class CreateUnionsTable extends Migration
         Schema::create('unions', function (Blueprint $table) {
             $table->id();
             $table->integer('upazilla_id');
-            $table->string('union');
+            $table->string('union')->nullable()->collation('utf8mb4_unicode_ci');
+            $table->string('union_en')->nullable();
             $table->timestamps();
         });
     }

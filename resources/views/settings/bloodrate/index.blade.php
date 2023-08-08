@@ -25,6 +25,7 @@
                 <tr>
                     <th>#SL</th>
                     <th>Blood Rate</th>
+                    <th>Blood Rate (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -33,6 +34,7 @@
                     @foreach($bloodrate as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
+                            <td>{{$u->blood_rate_en}}</td>
                             <td>{{$u->blood_rate}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.bloodrate.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

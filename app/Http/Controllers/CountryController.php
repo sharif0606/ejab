@@ -40,6 +40,7 @@ class CountryController extends Controller
     {
         try{
             $data=new Country;
+            $data->country_en=$request->country_en;
             $data->country=$request->country;
             $data->code=$request->code;
             
@@ -86,6 +87,7 @@ class CountryController extends Controller
         try{
             
             $country->country=$request->country;
+            $country->country_en=$request->country_en;
             $country->code=$request->code;
             
             if(!!$country->save()){

@@ -36,7 +36,7 @@ select {
 					<form action="{{route(currentUser().'.district.store')}}" method="post" class="form-search">
 					@csrf
 						<div class="row">
-							<div class="col-xs-12 col-sm-6">
+							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label>Select Division</label>
 									<select class="form-control" name="division_id">
@@ -48,9 +48,25 @@ select {
 									</select>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('district')) has-error @endif">
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('district_en')) has-error @endif">
 									<label>District Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="district_en" value="{{old('district_en')}}">
+										@if($errors->has('district_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('district_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('district_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('district')) has-error @endif">
+									<label>District Name (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="district" value="{{old('district')}}">
 										@if($errors->has('district')) 

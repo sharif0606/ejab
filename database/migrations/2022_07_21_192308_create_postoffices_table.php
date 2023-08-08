@@ -16,7 +16,8 @@ class CreatePostofficesTable extends Migration
         Schema::create('postoffices', function (Blueprint $table) {
             $table->id();
             $table->integer('upazilla_id');
-            $table->string('postoffice');
+            $table->string('postoffice')->collation('utf8mb4_unicode_ci');
+            $table->string('postoffice_en');
             $table->timestamps();
         });
     }

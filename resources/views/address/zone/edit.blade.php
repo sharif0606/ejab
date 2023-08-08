@@ -50,8 +50,24 @@ select {
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('zone')) has-error @endif">
+								<div class="form-group @if($errors->has('zone_en')) has-error @endif">
 									<label>Zone Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="zone_en" value="{{$zone->zone_en}}">
+										@if($errors->has('zone_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('zone_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('zone_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group @if($errors->has('zone')) has-error @endif">
+									<label>Zone Name (Bangla)<span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="zone" value="{{$zone->zone}}">
 										@if($errors->has('zone')) 

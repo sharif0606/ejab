@@ -15,7 +15,8 @@ class CreateBloodRatesTable extends Migration
     {
         Schema::create('blood_rates', function (Blueprint $table) {
             $table->id();
-            $table->string('blood_rate')->collation('utf8mb4_unicode_ci');
+            $table->string('blood_rate')->nullable()->collation('utf8mb4_unicode_ci');
+            $table->string('blood_rate_en')->nullable();
             $table->timestamps();
         });
     }

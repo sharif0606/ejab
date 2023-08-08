@@ -28,6 +28,7 @@
                     <th>#SL</th>
                     <th>Zone</th>
                     <th>Division</th>
+                    <th>Division (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -37,6 +38,7 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$u->zone?$u->zone->zone:""}}</td>
+                            <td>{{$u->division_en}}</td>
                             <td>{{$u->division}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.division.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

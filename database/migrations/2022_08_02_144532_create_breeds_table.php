@@ -15,7 +15,8 @@ class CreateBreedsTable extends Migration
     {
         Schema::create('breeds', function (Blueprint $table) {
             $table->id();
-            $table->string('breed')->collation('utf8mb4_unicode_ci');
+            $table->string('breed')->nullable()->collation('utf8mb4_unicode_ci');
+            $table->string('breed_en')->nullable();
             $table->timestamps();
         });
     }

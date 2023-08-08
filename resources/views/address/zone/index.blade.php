@@ -26,7 +26,8 @@
                 <tr>
                     <th>#SL</th>
                     <th>Country</th>
-                    <th>Name</th>
+                    <th>Zone</th>
+                    <th>Zone (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$u->country?$u->country->country:""}}</td>
+                            <td>{{$u->zone_en}}</td>
                             <td>{{$u->zone}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.zone.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

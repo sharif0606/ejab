@@ -59,7 +59,7 @@ hr {
 										    <option value="">Select Zone</option>
 										    @if($zone)
 										        @foreach($zone as $z)
-										            <option value="{{$z->id}}" @if($z->id==old('zone_id',$aidealer->zone_id)) selected @endif >{{$z->zone}}</option>
+										            <option value="{{$z->id}}" @if($z->id==old('zone_id',$aidealer->zone_id)) selected @endif >{{$z->zone_en}}</option>
 										        @endforeach
 										    @endif
 										</select>
@@ -74,7 +74,7 @@ hr {
 										    <option value="">Select Division</option>
 										    @if($division)
 										        @foreach($division as $divi)
-										            <option value="{{$divi->id}}" @if($divi->id==old('division_id',$aidealer->division_id)) selected @endif class="pdiviop pdiviop{{$divi->zone_id}}">{{$divi->division}}</option>
+										            <option value="{{$divi->id}}" @if($divi->id==old('division_id',$aidealer->division_id)) selected @endif class="pdiviop pdiviop{{$divi->zone_id}}">{{$divi->division_en}}</option>
 										        @endforeach
 										    @endif
 										</select>
@@ -89,7 +89,7 @@ hr {
 										    <option value="">Select District </option>
 										    @if($district)
 										        @foreach($district as $dist)
-										            <option value="{{$dist->id}}"  @if($dist->id==old('district_id',$aidealer->district_id)) selected @endif class="pdist pdist{{$dist->division_id}}">{{$dist->district}}</option>
+										            <option value="{{$dist->id}}"  @if($dist->id==old('district_id',$aidealer->district_id)) selected @endif class="pdist pdist{{$dist->division_id}}">{{$dist->district_en}}</option>
 										        @endforeach
 										    @endif
 										</select>
@@ -104,7 +104,7 @@ hr {
 										    <option value="">Select Upazilla</option>
 										    @if($upazilla)
 										        @foreach($upazilla as $upo)
-										            <option value="{{$upo->id}}"  @if($upo->id==old('upazilla_id',$aidealer->upazilla_id)) selected @endif class="pupo pupo{{$upo->district_id}}">{{$upo->upazilla}}</option>
+										            <option value="{{$upo->id}}"  @if($upo->id==old('upazilla_id',$aidealer->upazilla_id)) selected @endif class="pupo pupo{{$upo->district_id}}">{{$upo->upazilla_en}}</option>
 										        @endforeach
 										    @endif
 										</select>
@@ -119,7 +119,7 @@ hr {
 										    <option value="">Select Union </option>
 										    @if($union)
 										        @foreach($union as $uni)
-										            <option value="{{$uni->id}}"  @if($uni->id==old('union_id',$aidealer->union_id)) selected @endif class="puni puni{{$uni->upazilla_id}}">{{$uni->union}}</option>
+										            <option value="{{$uni->id}}"  @if($uni->id==old('union_id',$aidealer->union_id)) selected @endif class="puni puni{{$uni->upazilla_id}}">{{$uni->union_en}}</option>
 										        @endforeach
 										    @endif
 										</select>

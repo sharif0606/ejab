@@ -40,6 +40,7 @@ class ColorController extends Controller
     {
         try{
             $data=new Color;
+            $data->color_en=$request->color_en;
             $data->color=$request->color;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.color.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
@@ -82,6 +83,7 @@ class ColorController extends Controller
     {
         try{
             $data=$color;
+            $data->color_en=$request->color_en;
             $data->color=$request->color;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.color.index'))->with($this->responseMessage(true,null,"Data successfully saved."));

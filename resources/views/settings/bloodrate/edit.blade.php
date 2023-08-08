@@ -38,8 +38,24 @@ select {
 					@method('PUT')
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
+								<div class="form-group @if($errors->has('blood_rate_en')) has-error @endif">
+									<label>Blood Rate <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="blood_rate_en" value="{{$bloodrate->blood_rate_en}}">
+										@if($errors->has('blood_rate_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('blood_rate_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('blood_rate_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group @if($errors->has('blood_rate')) has-error @endif">
-									<label>Blood Rate Name <span class="text-danger">*</span></label>
+									<label>Blood Rate (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="blood_rate" value="{{$bloodrate->blood_rate}}">
 										@if($errors->has('blood_rate')) 
@@ -53,6 +69,7 @@ select {
 									@endif
 								</div>
 							</div>
+							
 						</div>
 						<div class="row">
 							<div class="col-sm-12 text-right">

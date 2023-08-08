@@ -43,6 +43,7 @@ class DivisionController extends Controller
         try{
             $data=new Division;
             $data->division=$request->division;
+            $data->division_en=$request->division_en;
             $data->zone_id=$request->zone_id;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.division.index'))->with($this->responseMessage(true,null,"Data successfully created."));
@@ -88,6 +89,7 @@ class DivisionController extends Controller
         try{
             
             $division->division=$request->division;
+            $division->division_en=$request->division_en;
             $division->zone_id=$request->zone_id;
             
             if(!!$division->save()){

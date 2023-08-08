@@ -40,6 +40,7 @@ class BloodRateController extends Controller
     {
         try{
             $data=new BloodRate;
+            $data->blood_rate_en=$request->blood_rate_en;
             $data->blood_rate=$request->blood_rate;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.bloodrate.index'))->with($this->responseMessage(true,null,"Data successfully saved."));
@@ -82,6 +83,7 @@ class BloodRateController extends Controller
     {
         try{
             $data=$bloodrate;
+            $data->blood_rate_en=$request->blood_rate_en;
             $data->blood_rate=$request->blood_rate;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.bloodrate.index'))->with($this->responseMessage(true,null,"Data successfully saved."));

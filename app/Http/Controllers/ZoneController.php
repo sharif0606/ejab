@@ -44,6 +44,7 @@ class ZoneController extends Controller
         try{
             $data=new Zone;
             $data->zone=$request->zone;
+            $data->zone_en=$request->zone_en;
             $data->country_id=$request->country_id;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.zone.index'))->with($this->responseMessage(true,null,"Data successfully created."));
@@ -88,6 +89,7 @@ class ZoneController extends Controller
         try{
             
             $zone->zone=$request->zone;
+            $zone->zone_en=$request->zone_en;
             $zone->country_id=$request->country_id;
             
             if(!!$zone->save()){

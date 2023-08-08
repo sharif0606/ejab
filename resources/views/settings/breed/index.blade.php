@@ -25,6 +25,7 @@
                 <tr>
                     <th>#SL</th>
                     <th>Breed</th>
+                    <th>Breed (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -33,6 +34,7 @@
                     @foreach($breed as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
+                            <td>{{$u->breed_en}}</td>
                             <td>{{$u->breed}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.breed.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

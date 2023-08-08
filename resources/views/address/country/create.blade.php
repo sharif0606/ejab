@@ -36,9 +36,25 @@ select {
 					<form action="{{route(currentUser().'.country.store')}}" method="post" class="form-search">
 					@csrf
 						<div class="row">
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('country')) has-error @endif">
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('country_en')) has-error @endif">
 									<label>Country Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="country_en" value="{{old('country_en')}}">
+										@if($errors->has('country_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('country_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('country_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('country')) has-error @endif">
+									<label>Country Name  (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="country" value="{{old('country')}}">
 										@if($errors->has('country')) 
@@ -52,7 +68,7 @@ select {
 									@endif
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6">
+							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label>Country Code</label>
 									<span class="block input-icon input-icon-right">

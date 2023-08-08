@@ -25,9 +25,9 @@
             <thead>
                 <tr>
                     <th>#SL</th>
-                    <th>Zone</th>
                     <th>Division</th>
                     <th>District</th>
+                    <th>District (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -36,8 +36,8 @@
                     @foreach($district as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$u->division->zone?$u->division->zone->zone:""}}</td>
                             <td>{{$u->division->division}}</td>
+                            <td>{{$u->district_en}}</td>
                             <td>{{$u->district}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.district.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

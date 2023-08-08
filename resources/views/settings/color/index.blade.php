@@ -27,6 +27,7 @@
                 <tr>
                     <th>#SL</th>
                     <th>Color</th>
+                    <th>Color (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                     @foreach($color as $i=>$u)
                         <tr>
                             <td>{{++$i}}</td>
+                            <td>{{$u->color_en}}</td>
                             <td>{{$u->color}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.color.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

@@ -43,6 +43,7 @@ class DistrictController extends Controller
         try{
             $data=new District;
             $data->district=$request->district;
+            $data->district_en=$request->district_en;
             $data->division_id=$request->division_id;
 
             
@@ -90,6 +91,7 @@ class DistrictController extends Controller
         try{
             
             $district->district=$request->district;
+            $district->district_en=$request->district_en;
             $district->division_id=$request->division_id;
             
             if(!!$district->save()){

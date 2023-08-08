@@ -37,9 +37,25 @@ select {
 					@csrf
 					@method('PUT')
 						<div class="row">
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('country')) has-error @endif">
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('country_en')) has-error @endif">
 									<label>Country Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="country_en" value="{{$country->country_en}}">
+										@if($errors->has('country_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('country_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('country_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('country')) has-error @endif">
+									<label>Country Name (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="country" value="{{$country->country}}">
 										@if($errors->has('country')) 
@@ -53,7 +69,7 @@ select {
 									@endif
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6">
+							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label>Country Code</label>
 									<span class="block input-icon input-icon-right">

@@ -134,11 +134,11 @@
                                 <td>{{$u->serial_no}}</td>
                                 <td>{{$u->name}}</td>
                                 <td>
-                                    <b>Union-</b>{{$u->union?$u->union->union:""}},
-                                    <b>Upazilla-</b>{{$u->upazilla?$u->upazilla->upazilla:""}},
-                                    <b>District-</b>{{$u->district?$u->district->district:""}},
-                                    <b>Division-</b>{{$u->division?$u->division->division:""}},
-                                    <b>Zone-</b>{{$u->zone?$u->zone->zone:""}}<br>
+                                    <b>Union-</b>{{$u->union?$u->union->union_en:""}},
+                                    <b>Upazilla-</b>{{$u->upazilla?$u->upazilla->upazilla_en:""}},
+                                    <b>District-</b>{{$u->district?$u->district->district_en:""}},
+                                    <b>Division-</b>{{$u->division?$u->division->division_en:""}},
+                                    <b>Zone-</b>{{$u->zone?$u->zone->zone_en:""}}<br>
                                     <b>Contact-</b>{{$u->contact_number}}
                                 </td>
                                 <td>{{$u->ai_technician_name}}</td>
@@ -147,7 +147,7 @@
                                 <td>{{$u->training}}</td>
                                 <td>{{$u->ejab_batch_no}}</td>
                                 <td>
-                                    <a href="{{route(currentUser().'.aidealer.show',$u->id)}}" class="btn btn-sm btn-primary" ><i class="fa fa-eye"></i></a>
+                                    <!-- <a href="{{route(currentUser().'.aidealer.show',$u->id)}}" class="btn btn-sm btn-primary" ><i class="fa fa-eye"></i></a> -->
                                     <a href="{{route(currentUser().'.aidealer.edit',$u->id)}}" class="btn btn-sm btn-info" ><i class="fa fa-edit"></i></a>
                                     <form method="POST" style="display:inline" action="{{ route(currentUser().'.aidealer.destroy', $u->id) }}">
                                         @csrf

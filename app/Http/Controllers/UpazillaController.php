@@ -43,6 +43,7 @@ class UpazillaController extends Controller
         try{
             $data=new Upazilla;
             $data->upazilla=$request->upazilla;
+            $data->upazilla_en=$request->upazilla_en;
             $data->district_id=$request->district_id;
 
             
@@ -90,6 +91,7 @@ class UpazillaController extends Controller
         try{
             
             $upazilla->upazilla=$request->upazilla;
+            $upazilla->upazilla_en=$request->upazilla_en;
             $upazilla->district_id=$request->district_id;
             
             if(!!$upazilla->save()){

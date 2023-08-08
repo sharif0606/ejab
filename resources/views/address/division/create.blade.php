@@ -36,9 +36,9 @@ select {
 					<form action="{{route(currentUser().'.division.store')}}" method="post" class="form-search">
 					@csrf
 						<div class="row">
-							<div class="col-xs-12 col-sm-6">
+							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label>Select Zone <span class="text-danger">*</span></label>
+									<label>Zone <span class="text-danger">*</span></label>
 									<select class="form-control" name="zone_id" required>
 									    @if($allZone)
     									    @foreach($allZone as $zone)
@@ -48,9 +48,25 @@ select {
 									</select>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('division')) has-error @endif">
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('division_en')) has-error @endif">
 									<label>Division Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="division_en" value="{{old('division_en')}}" required>
+										@if($errors->has('division_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('division_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('division_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('division')) has-error @endif">
+									<label>Division Name (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="division" value="{{old('division')}}" required>
 										@if($errors->has('division')) 

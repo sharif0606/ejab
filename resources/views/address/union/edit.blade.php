@@ -37,9 +37,9 @@ select {
 					@csrf
 					@method('PUT')
 						<div class="row">
-							<div class="col-xs-12 col-sm-6">
+							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label>Select Upazila</label>
+									<label>Upazila</label>
 									<select class="form-control" name="upazilla_id">
 									    @if($allUpazilla)
 											@foreach($allUpazilla as $u)
@@ -49,9 +49,25 @@ select {
 									</select>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('union')) has-error @endif">
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('union_en')) has-error @endif">
 									<label>Union Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="union_en" value="{{ old('union_en', $union->union_en) }}">
+										@if($errors->has('union_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('union_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('union_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('union')) has-error @endif">
+									<label>Union Name (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="union" value="{{ old('union', $union->union) }}">
 										@if($errors->has('union')) 

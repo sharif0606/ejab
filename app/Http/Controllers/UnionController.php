@@ -43,6 +43,7 @@ class UnionController extends Controller
         try{
             $data=new Union;
             $data->union=$request->union;
+            $data->union_en=$request->union_en;
             $data->upazilla_id=$request->upazilla_id;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.union.index'))->with($this->responseMessage(true,null,"Data successfully created."));
@@ -87,6 +88,7 @@ class UnionController extends Controller
         try{
             $data=$union;
             $data->union=$request->union;
+            $data->union_en=$request->union_en;
             $data->upazilla_id=$request->upazilla_id;
             if(!!$data->save()){
                 return redirect(route(currentUser().'.union.index'))->with($this->responseMessage(true,null,"Data successfully created."));

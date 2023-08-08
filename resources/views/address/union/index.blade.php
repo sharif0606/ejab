@@ -26,6 +26,7 @@
                     <th>#SL</th>
                     <th>Upazilla</th>
                     <th>Union</th>
+                    <th>Union (Bangla)</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$u->upazilla?$u->upazilla->upazilla:""}}</td>
+                            <td>{{$u->union_en}}</td>
                             <td>{{$u->union}}</td>
                             <td>
                                 <a href="{{route(currentUser().'.union.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>

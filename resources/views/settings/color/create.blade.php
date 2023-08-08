@@ -37,8 +37,24 @@ select {
 					@csrf
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
+								<div class="form-group @if($errors->has('color_en')) has-error @endif">
+									<label>Color <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="color_en" value="{{old('color_en')}}">
+										@if($errors->has('color_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('color_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('color_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group @if($errors->has('color')) has-error @endif">
-									<label>Color Name <span class="text-danger">*</span></label>
+									<label>Color (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="color" value="{{old('color')}}">
 										@if($errors->has('color')) 

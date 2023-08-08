@@ -37,7 +37,7 @@ select {
 					@csrf
 					@method('PUT')
 						<div class="row">
-							<div class="col-xs-12 col-sm-6">
+							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label>Select District</label>
 									<select class="form-control" name="district_id">
@@ -49,9 +49,25 @@ select {
 									</select>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group @if($errors->has('upazilla')) has-error @endif">
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('upazilla_en')) has-error @endif">
 									<label>Upazilla Name <span class="text-danger">*</span></label>
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" name="upazilla_en" value="{{ old('upazilla_en', $upazilla->upazilla_en) }}">
+										@if($errors->has('upazilla_en')) 
+											<i class="ace-icon fa fa-times-circle"></i>
+										@endif
+									</span>
+									@if($errors->has('upazilla_en')) 
+										<div class="help-block col-sm-reset">
+											{{ $errors->first('upazilla_en') }}
+										</div>
+									@endif
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="form-group @if($errors->has('upazilla')) has-error @endif">
+									<label>Upazilla Name (Bangla) <span class="text-danger">*</span></label>
 									<span class="block input-icon input-icon-right">
 										<input type="text" class="width-100" name="upazilla" value="{{ old('upazilla', $upazilla->upazilla) }}">
 										@if($errors->has('upazilla')) 
