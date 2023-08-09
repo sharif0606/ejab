@@ -252,17 +252,17 @@ hr {
 							</div>
 							<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
-									<label>ষাড়ের নাম </label>
+									<label>ষাড়ের নাম্বার </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="bull_name" value="{{old('bull_name')}}">
+										<input onblur="get_bull(this.value)" type="text" class="width-100" name="bull_number" value="{{old('bull_number')}}">
 									</span>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
-									<label>ষাড়ের নাম্বার </label>
+									<label>ষাড়ের নাম </label>
 									<span class="block input-icon input-icon-right">
-										<input type="text" class="width-100" name="bull_number" value="{{old('bull_number')}}">
+										<input type="text" class="width-100" id="bull_name" readonly name="bull_name" value="{{old('bull_name')}}">
 									</span>
 								</div>
 							</div>
@@ -270,7 +270,7 @@ hr {
 								<div class="form-group">
 									<label>ষাড়ের জাত  </label>
 									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="bull_breed">
+										<select class="width-100" name="bull_breed" id="bull_breed">
 										    <option value="">জাত নির্বাচন করুন </option>
 										    @if($breed)
 										        @foreach($breed as $br)
@@ -432,5 +432,14 @@ hr {
 	<script src="{{asset('public/assets/js/chosen.jquery.min.js')}}"></script>
 	<script>
 		//$('.chosen-select').chosen({allow_single_deselect:true}); 
+		function get_bull(v){
+			var bull= <?= json_encode($bull) ?>;
+			for(var i=0; i <= bull.length; i++){
+				if(v==bull[i].bull_number){
+					$("#bull_name").val(bull[i].bull_name);
+					$("#bull_breed").val(bull[i].breed_id);
+				}
+			}
+		}
 	</script>
 @endpush

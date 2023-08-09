@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\CattleController;
+use App\Http\Controllers\BullController;
 use App\Http\Controllers\AiDealerController;
 
 /* Address support */
@@ -61,6 +62,7 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
         Route::get('/dashboard', [DashboardController::class, 'superadmin'])->name('superadmin.dashboard');
         Route::resource('users', UserController::class, ['names' => 'superadmin.users']);
 
+        Route::resource('bull', BullController::class, ['names' => 'superadmin.bull']);
         Route::resource('cattle', CattleController::class, ['names' => 'superadmin.cattle']);
         Route::get('/cattle_export', [CattleController::class, 'cattle_export'])->name('superadmin.cattle_export');
 

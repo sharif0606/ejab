@@ -32,6 +32,7 @@
 			<li class="hover"><a href="{{route(currentUser().'.color.index')}}">Color</a></li>
 			<li class="hover"><a href="{{route(currentUser().'.bloodrate.index')}}">Blood Rate</a></li>
 			<li class="hover"><a href="{{route(currentUser().'.breed.index')}}">Breed</a></li>
+			<li class="hover"><a href="{{route(currentUser().'.bull.index')}}">Bull</a></li>
 		</ul>
 	</li>
 	<li class="hover">

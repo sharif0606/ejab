@@ -15,6 +15,7 @@ use App\Models\Union;
 use App\Models\BloodRate;
 use App\Models\Breed;
 use App\Models\Color;
+use App\Models\Bull;
 //use App\Models\Village;
 //use App\Models\Postoffice;
 
@@ -98,9 +99,10 @@ class CattleController extends Controller
         $district=District::all();
         $upazilla=Upazilla::all();
         $union=Union::all();
+        $bull=Bull::get()->toArray();
         //$village=Village::all();
         //$postoffice=Postoffice::all();
-        return view('cattle.create',compact('zone','division','district','breed','blood','color','upazilla','union'));
+        return view('cattle.create',compact('zone','division','district','breed','blood','color','upazilla','union','bull'));
     }
 
     /**
