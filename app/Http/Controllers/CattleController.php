@@ -198,9 +198,10 @@ class CattleController extends Controller
         $district=District::all();
         $upazilla=Upazilla::all();
         $union=Union::all();
+        $bull=Bull::get()->toArray();
         //$village=Village::all();
         //$postoffice=Postoffice::all();
-        return view('cattle.edit',compact('cattle','zone','division','district','breed','blood','color','union','upazilla'));
+        return view('cattle.edit',compact('cattle','zone','division','district','breed','blood','color','union','upazilla','bull'));
     }
 
     /**
