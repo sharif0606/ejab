@@ -30,7 +30,7 @@
 					@csrf
 					@method('PUT')
 					<div class="row">
-						<div class="col-xs-12 col-sm-4">
+						<div class="col-xs-12 col-sm-3">
 							<div class="form-group">
 								<label> ষাড়ের জাত </label>
 								<span class="block input-icon input-icon-right">
@@ -45,7 +45,22 @@
 								</span>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-4">
+						<div class="col-xs-12 col-sm-3">
+							<div class="form-group">
+								<label> রক্তের হার </label>
+								<span class="block input-icon input-icon-right">
+									<select class="width-100 chosen-select" name="blood_rate_id">
+										<option value="">রক্তের হার নির্বাচন করুন </option>
+										@if($bloodrate)
+											@foreach($bloodrate as $z)
+												<option value="{{$z->id}}" @if($z->id==old('blood_rate_id',$bull->blood_rate_id)) selected @endif >{{$z->blood_rate}}</option>
+											@endforeach
+										@endif
+									</select>
+								</span>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-3">
 							<div class="form-group">
 								<label>ষাড়ের নাম </label>
 								<span class="block input-icon input-icon-right">
@@ -53,7 +68,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-4">
+						<div class="col-xs-12 col-sm-3">
 							<div class="form-group">
 								<label>ষাড়ের নাম্বার </label>
 								<span class="block input-icon input-icon-right">

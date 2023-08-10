@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bull;
 use App\Models\Breed;
+use App\Models\BloodRate;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 
@@ -29,7 +30,8 @@ class BullController extends Controller
     public function create()
     {
         $breed=Breed::get();
-        return view('bull.create',compact('breed'));
+        $bloodrate=BloodRate::get();
+        return view('bull.create',compact('breed','bloodrate'));
     }
 
     /**
@@ -43,6 +45,7 @@ class BullController extends Controller
         try{
             $bull=new Bull;
             $bull->breed_id=$request->breed_id;
+            $bull->blood_rate_id=$request->blood_rate_id;
             $bull->bull_number=$request->bull_number;
             $bull->bull_name=$request->bull_name;
             if(!!$bull->save()){
@@ -73,7 +76,8 @@ class BullController extends Controller
     public function edit(Bull $bull)
     {
         $breed=Breed::get();
-        return view('bull.edit',compact('breed','bull'));
+        $bloodrate=BloodRate::get();
+        return view('bull.edit',compact('breed','bull','bloodrate'));
     }
 
     /**
@@ -87,6 +91,7 @@ class BullController extends Controller
     {
         try{
             $bull->breed_id=$request->breed_id;
+            $bull->blood_rate_id=$request->blood_rate_id;
             $bull->bull_number=$request->bull_number;
             $bull->bull_name=$request->bull_name;
             if(!!$bull->save()){

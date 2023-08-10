@@ -1,18 +1,6 @@
 @extends('layout.app')
 @section('title','ষাঁড় যোগ')
-@push('style')
-<link rel="stylesheet" href="{{asset('public/assets/css/chosen.min.css')}}"/>
-<style>
-select {
-    padding: 3px 4px;
-    height: 34px;
-}
-.form-group{
-    margin-bottom:5px;
-}
-		
-</style>
-@endpush
+
 @section('content')
 <div class="page-header">
     <h1>
@@ -42,7 +30,7 @@ select {
 					@csrf
 						
 						<div class="row">
-					        <div class="col-xs-12 col-sm-4">
+					        <div class="col-xs-12 col-sm-3">
 					            <div class="form-group">
 									<label> ষাড়ের জাত </label>
 									<span class="block input-icon input-icon-right">
@@ -57,7 +45,22 @@ select {
 									</span>
 								</div>
 					        </div>
-					        <div class="col-xs-12 col-sm-4">
+							<div class="col-xs-12 col-sm-3">
+					            <div class="form-group">
+									<label> রক্তের হার </label>
+									<span class="block input-icon input-icon-right">
+										<select class="width-100 chosen-select" name="blood_rate_id">
+										    <option value="">রক্তের হার নির্বাচন করুন </option>
+										    @if($bloodrate)
+										        @foreach($bloodrate as $z)
+										            <option value="{{$z->id}}" @if($z->id==old('blood_rate_id')) selected @endif >{{$z->blood_rate}}</option>
+										        @endforeach
+										    @endif
+										</select>
+									</span>
+								</div>
+					        </div>
+					        <div class="col-xs-12 col-sm-3">
 								<div class="form-group">
 									<label>ষাড়ের নাম </label>
 									<span class="block input-icon input-icon-right">
@@ -65,7 +68,7 @@ select {
 									</span>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-4">
+							<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
 									<label>ষাড়ের নাম্বার </label>
 									<span class="block input-icon input-icon-right">
@@ -88,10 +91,3 @@ select {
 </div>
 
 @endsection
-
-@push('script')
-	<script src="{{asset('public/assets/js/chosen.jquery.min.js')}}"></script>
-	<script>
-		//$('.chosen-select').chosen({allow_single_deselect:true}); 
-	</script>
-@endpush

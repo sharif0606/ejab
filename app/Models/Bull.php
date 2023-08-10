@@ -11,4 +11,7 @@ class Bull extends Model
     public function breed(){
         return $this->belongsTo('App\Models\Breed');
     }
+    public function bloodrate(){
+        return $this->belongsTo('App\Models\BloodRate');
+    }
 }

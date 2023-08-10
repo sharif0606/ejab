@@ -16,6 +16,7 @@ class CreateBullsTable extends Migration
         Schema::create('bulls', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('breed_id');
+            $table->unsignedBigInteger('blood_rate_id');
             $table->string('bull_number')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('bull_name')->nullable()->collation('utf8mb4_unicode_ci');
             $table->timestamps();

@@ -287,7 +287,7 @@ hr {
 								<div class="form-group">
 									<label>রক্তের হার  </label>
 									<span class="block input-icon input-icon-right">
-										<select class="width-100" name="blood_qty">
+										<select class="width-100" name="blood_qty" id="blood_qty">
 										    <option value=""> হার  নির্বাচন করুন </option>
 										    @if($blood)
 										        @foreach($blood as $bl)
@@ -438,6 +438,7 @@ hr {
 				if(v==bull[i].bull_number){
 					$("#bull_name").val(bull[i].bull_name);
 					$("#bull_breed").val(bull[i].breed_id);
+					$("#blood_qty").val(bull[i].blood_rate_id);
 				}
 			}
 		}

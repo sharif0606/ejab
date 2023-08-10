@@ -27,6 +27,7 @@
                     <tr>
                         <th>#SL</th>
                         <th>ষাড়ের জাত</th>
+                        <th>রক্তের হার</th>
                         <th>ষাঁড়ের নাম্বার</th>
                         <th>ষাঁড়ের নাম</th>
                         <th style="width:140px">Action</th>
@@ -38,6 +39,7 @@
                             <tr>
                                 <td>{{++$i}}</td>
                                 <td>{{$u->breed?$u->breed->breed:""}}</td>
+                                <td>{{$u->bloodrate?$u->bloodrate->blood_rate:""}}</td>
                                 <td>{{$u->bull_number}}</td>
                                 <td>{{$u->bull_name}}</td>
                                 <td>
