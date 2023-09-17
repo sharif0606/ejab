@@ -12,7 +12,6 @@ use App\Models\Union;
 
 
 use Illuminate\Http\Request;
-
 use App\Http\Traits\ResponseTrait;
 
 use Exception;

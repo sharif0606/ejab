@@ -19,8 +19,8 @@ class CreateAiDealersTable extends Migration
             $table->integer('zone_id')->nullable();
             $table->integer('division_id')->nullable();
             $table->integer('district_id')->nullable();
-            $table->integer('upazilla')->nullable();
-            $table->integer('union')->nullable();
+            $table->integer('upazilla_id')->nullable();
+            $table->integer('union_id')->nullable();
             $table->string('name')->collation('utf8mb4_unicode_ci');
             $table->text('address')->collation('utf8mb4_unicode_ci');
             $table->string('contact_number')->collation('utf8mb4_unicode_ci');

@@ -37,18 +37,7 @@ select {
 					@csrf
 					@method('PUT')
 						<div class="row">
-							<div class="col-xs-12 col-sm-4">
-								<div class="form-group">
-									<label>Zone <span class="text-danger">*</span></label>
-									<select class="form-control" name="zone_id">
-									    @if($allZone)
-    									    @foreach($allZone as $zone)
-    									        <option value="{{$zone->id}}" @if($zone->id == $division->zone_id) selected @endif>{{$zone->zone}}</option>
-    									    @endforeach
-									    @endif
-									</select>
-								</div>
-							</div>
+							<input type="hidden" name="zone_id" value="1">
 							<div class="col-xs-12 col-sm-4">
 								<div class="form-group @if($errors->has('division_en')) has-error @endif">
 									<label>Division Name <span class="text-danger">*</span></label>

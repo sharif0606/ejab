@@ -49,7 +49,7 @@ hr {
 					            <div class="form-group">
 									<label> Zone </label>
 									<span class="block input-icon input-icon-right">
-										<select class="width-100 chosen-select" name="zone_id" onchange="$('.pdiviop').hide();$('.pdiviop'+this.value).show()">
+										<select class="width-100 chosen-select" name="zone_id">
 										    <option value="">Select Zone</option>
 										    @if($zone)
 										        @foreach($zone as $z)

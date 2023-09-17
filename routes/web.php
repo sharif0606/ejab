@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CattleController;
 use App\Http\Controllers\BullController;
 use App\Http\Controllers\AiDealerController;
+use App\Http\Controllers\AiDealerMessageController;
 
 /* Address support */
 use App\Http\Controllers\CountryController;
@@ -68,7 +69,7 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
 
         Route::resource('aidealer', AiDealerController::class, ['names' => 'superadmin.aidealer']);
         Route::get('/aidealer_export', [AiDealerController::class, 'aidealer_export'])->name('superadmin.aidealer_export');
-        
+        Route::resource('aidealer_sms', AiDealerMessageController::class, ['names' => 'superadmin.aidealersms']);
         
         /* address support */
         Route::resource('country', CountryController::class, ['names' => 'superadmin.country']);

@@ -36,18 +36,7 @@ select {
 					<form action="{{route(currentUser().'.division.store')}}" method="post" class="form-search">
 					@csrf
 						<div class="row">
-							<div class="col-xs-12 col-sm-4">
-								<div class="form-group">
-									<label>Zone <span class="text-danger">*</span></label>
-									<select class="form-control" name="zone_id" required>
-									    @if($allZone)
-    									    @foreach($allZone as $zone)
-    									        <option value="{{$zone->id}}">{{$zone->zone}}</option>
-    									    @endforeach
-									    @endif
-									</select>
-								</div>
-							</div>
+							<input type="hidden" name="zone_id" value="1">
 							<div class="col-xs-12 col-sm-4">
 								<div class="form-group @if($errors->has('division_en')) has-error @endif">
 									<label>Division Name <span class="text-danger">*</span></label>

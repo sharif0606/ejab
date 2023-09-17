@@ -90,7 +90,7 @@ hr {
 					            <div class="form-group">
 									<label> জোন </label>
 									<span class="block input-icon input-icon-right">
-										<select class="width-100 chosen-select" name="zone_id" onchange="$('.pdiviop').hide();$('.pdiviop'+this.value).show()">
+										<select class="width-100 chosen-select" name="zone_id">
 										    <option value="">জোন নির্বাচন করুন </option>
 										    @if($zone)
 										        @foreach($zone as $z)
