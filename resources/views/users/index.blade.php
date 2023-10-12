@@ -7,7 +7,7 @@
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
             User List
-			<a class="btn btn-primary pull-right btn-sm" href="{{route('users.create')}}">Add New</a>
+			<a class="btn btn-primary pull-right btn-sm" href="{{route(currentUser().'.users.create')}}">Add New</a>
         </small>
     </h1>
 </div><!-- /.page-header -->
@@ -45,7 +45,7 @@
                             <td>{{$u->role->type}}</td>
                             <td>{{$status[$u->status]}}</td>
                             <td>
-                                <a href="{{route('users.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
+                                <a href="{{route(currentUser().'.users.edit',$u->id)}}" ><i class="fa fa-edit"></i></a>
 
                             </td>
                         </tr>

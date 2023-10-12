@@ -39,9 +39,15 @@
 		<a href="{{route(currentUser().'.users.index')}}"><span class="menu-text"> Users </span></a>
 		<b class="arrow"></b>
 	</li>
-	<li class="hover">
-		<a href="{{route(currentUser().'.aidealer.index')}}"><span class="menu-text"> AI Dealer </span></a>
-		<b class="arrow"></b>
+	<li class="open hover">
+		<a href="#" class="dropdown-toggle">
+			<span class="menu-text"> AI Dealer </span>
+			<b class="arrow fa fa-angle-down"></b>
+		</a>
+		<ul class="submenu">
+			<li class="hover"><a href="{{route(currentUser().'.aidealer.index')}}">List</a></li>
+			<li class="hover"><a href="{{route(currentUser().'.aidealersms.index')}}">Send Message</a></li>
+		</ul>
 	</li>
 	
 	<li style="width:100px; float:right"><a href="{{route('logout')}}">Logout</a></li>

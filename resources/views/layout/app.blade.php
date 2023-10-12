@@ -6,8 +6,7 @@
 		<title>{{Session::get('identity')}} | @yield('title')</title>
 
 		<meta name="description" content="top menu &amp; navigation" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="{{asset('public/assets/css/bootstrap.min.css')}}" />
 		<link rel="stylesheet" href="{{asset('public/assets/font-awesome/4.5.0/css/font-awesome.min.css')}}" />

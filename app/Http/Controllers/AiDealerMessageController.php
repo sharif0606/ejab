@@ -45,7 +45,7 @@ class AiDealerMessageController extends Controller
         $aidealer=$aidealer->paginate(15);
 
 
-        return view('aidealer.index',compact('zone','division','district','upazilla','union','aidealer'));
+        return view('aidealersms.index',compact('zone','division','district','upazilla','union','aidealer'));
     }
 
     /**
